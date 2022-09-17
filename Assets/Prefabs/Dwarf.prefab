@@ -125,4 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfe8cc9f6e58154ebe54da79a76d096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dwarfSpeed: 0
+  dwarfSpeed: 10
+  dwarfDurability: 60
+  dwarfPowerSpeed: 0

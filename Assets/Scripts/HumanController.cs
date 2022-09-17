@@ -6,27 +6,42 @@ public class HumanController : MonoBehaviour
 {
     Rigidbody rb;
 
-    public int humanSpeed;
-    public int humanDurability;
+    public float humanSpeed;
+    public float humanDurability;
+    public float humanPowerSpeed;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        humanPowerSpeed = ((humanSpeed * humanDurability) / 30);
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector3(humanSpeed,0,0);
-    }
+ 
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "ElfDeneme")
+        if (gameObject.name =="HumanDeneme")
         {
-            if (humanDurability > collision.gameObject.GetComponent<ElfController>().elfDurability)
-            {
-               humanSpeed += (humanDurability - collision.gameObject.GetComponent<ElfController>().elfDurability)*2;
-            }
+            rb.velocity = new Vector3(-humanSpeed, 0, 0);
+        }
+        else
+        {
+            rb.velocity = new Vector3(humanSpeed, 0, 0);
         }
     }
+
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name != "Floor")
+        {
+            humanSpeed = humanPowerSpeed;
+
+        }
+
+
+      
+    }
+    
 }

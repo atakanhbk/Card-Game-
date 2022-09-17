@@ -125,5 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7415d36e8ddf97041a42dd173cdeb1dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elfSpeed: 0
+  elfSpeed: 20
+  elfDurability: 30
+  elfPowerSpeed: 0
   cardDataBase: {fileID: 0}
