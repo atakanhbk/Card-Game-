@@ -67,7 +67,7 @@ public class CardController : MonoBehaviour
                 character.GetComponent<DwarfController>().dwarfSpeed = speed;
                 character.GetComponent<DwarfController>().dwarfDurability = durability;
             }
-            Debug.Log("Working");
+
             workForOnce = false;
         }
        

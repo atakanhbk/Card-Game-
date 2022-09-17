@@ -17,8 +17,5 @@ public class DirectionArrowController : MonoBehaviour
         spawnCharacterController.GetComponent<SpawnCharacterController>().canSpawn = true;
     }
 
-    private void Update()
-    {
-        Debug.Log("wOKÝRNG");
-    }
+ 
 }

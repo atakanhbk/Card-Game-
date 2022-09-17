@@ -3235,6 +3235,10 @@ PrefabInstance:
       propertyPath: directionsArrows
       value: 
       objectReference: {fileID: 301778027}
+    - target: {fileID: 5196919179393652725, guid: 94be3a90ccda8c14fb9f7013aecf068d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fe909bd1d74f7e1449add8061e09fb71, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94be3a90ccda8c14fb9f7013aecf068d, type: 3}
 --- !u!1001 &6666399135176512709
@@ -3244,6 +3248,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1879945556}
     m_Modifications:
+    - target: {fileID: 6666399134705105760, guid: e414d66cacfe16a4f8c9b29358c5a6c9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ba647e2f3b1dfa54191d1861ccea5dd3, type: 3}
     - target: {fileID: 6666399134717829338, guid: e414d66cacfe16a4f8c9b29358c5a6c9, type: 3}
       propertyPath: m_Name
       value: DwarfCard
@@ -3441,5 +3449,9 @@ PrefabInstance:
       propertyPath: directionsArrows
       value: 
       objectReference: {fileID: 301778027}
+    - target: {fileID: 8180917865728285813, guid: e606184bc2aaefd4bac08054984cdfad, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2c6b0538edd892a42b355773dea9e888, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e606184bc2aaefd4bac08054984cdfad, type: 3}
