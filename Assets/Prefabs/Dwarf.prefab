@@ -128,3 +128,6 @@ MonoBehaviour:
   dwarfSpeed: 10
   dwarfDurability: 60
   dwarfPowerSpeed: 0
+  enemyHealth: {fileID: 0}
+  damagePerSecond: 2
+  damage: 1

@@ -112,6 +112,9 @@ MonoBehaviour:
   humanSpeed: 15
   humanDurability: 35
   humanPowerSpeed: 0
+  enemyHealth: {fileID: 0}
+  damagePerSecond: 2
+  damage: 1
 --- !u!54 &4070669218761946157
 Rigidbody:
   m_ObjectHideFlags: 0

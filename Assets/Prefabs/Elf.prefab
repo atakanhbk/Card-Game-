@@ -129,3 +129,6 @@ MonoBehaviour:
   elfDurability: 30
   elfPowerSpeed: 0
   cardDataBase: {fileID: 0}
+  enemyHealth: {fileID: 0}
+  damagePerSecond: 2
+  damage: 1

@@ -10,9 +10,24 @@ public class DwarfController : MonoBehaviour
     public float dwarfDurability;
     public float dwarfPowerSpeed;
 
+    float timerToDoSomething = 0;
+    public GameObject enemyHealth;
+
+    [SerializeField] float damagePerSecond;
+    [SerializeField] int damage;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        if (gameObject.name == "DwarfDeneme")
+        {
+            enemyHealth = GameObject.FindGameObjectWithTag("OurHealth");
+        }
+        else
+        {
+            enemyHealth = GameObject.FindGameObjectWithTag("EnemyHealth");
+        }
+
 
         dwarfPowerSpeed = ((dwarfSpeed * dwarfDurability) / 30);
     }
@@ -20,6 +35,36 @@ public class DwarfController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameObject.name == "DwarfDeneme")
+        {
+            if (transform.position.x <= 0)
+            {
+                timerToDoSomething += Time.deltaTime;
+
+                if (timerToDoSomething >= damagePerSecond)
+                {
+                    enemyHealth.GetComponent<OurHealthController>().ourHealth -= damage;
+                    timerToDoSomething = 0;
+                }
+
+            }
+        }
+        else
+        {
+            if (transform.position.x >= 0)
+            {
+                timerToDoSomething += Time.deltaTime;
+
+                if (timerToDoSomething >= damagePerSecond)
+                {
+                    enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage;
+                    timerToDoSomething = 0;
+                }
+
+            }
+        }
+       
+
         rb.velocity = new Vector3(dwarfSpeed, 0, 0);
 
         if (gameObject.name == "DwarfDeneme")
