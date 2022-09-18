@@ -83,12 +83,31 @@ public class ElfController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+  
+
+        if (collision.gameObject.tag == "Base")
+        {
+            if (gameObject.name == "ElfDeneme")
+            {
+                enemyHealth.GetComponent<OurHealthController>().ourHealth -= damage * 10;
+                ourHealth.GetComponent<EnemyHealthController>().enemyHealth += damage * 10;
+        
+                Destroy(gameObject);
+            }
+            else
+            {
+                enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage*10;
+                ourHealth.GetComponent<OurHealthController>().ourHealth += damage*10;
+                Destroy(gameObject);
+            }
+          
+        }
+
 
         if (collision.gameObject.name != "Floor")
         {
             elfSpeed = elfPowerSpeed;
 
         }
-      
     }
 }

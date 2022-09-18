@@ -91,6 +91,12 @@ public class DwarfController : MonoBehaviour
 
         }
 
+        if (collision.gameObject.name == "Base")
+        {
+            enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage *3;
+            ourHealth.GetComponent<OurHealthController>().ourHealth += damage *3 ;
+        }
+
 
     }
 }
