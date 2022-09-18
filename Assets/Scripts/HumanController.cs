@@ -20,9 +20,22 @@ public class HumanController : MonoBehaviour
 
 
     public Canvas damageEffect;
+
+    public ParticleSystem ileriSurtunmeEffect1;
+    public ParticleSystem ileriSurtunmeEffect2;
+
+    public ParticleSystem geriyeSurtunmeEffect1;
+    public ParticleSystem geriyeSurtunmeEffect2;
+
+
+
+    bool moveForward;
+    bool moveBack;
+
     void Start()
     {
-    
+
+
         rb = GetComponent<Rigidbody>();
 
         humanPowerSpeed = ((humanSpeed * humanDurability) / 30);
@@ -45,6 +58,7 @@ public class HumanController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       StartCoroutine(CheckCharacterMoveForward());
         if (gameObject.name == "HumanDeneme")
         {
             if (transform.position.x <= 0)
@@ -100,6 +114,7 @@ public class HumanController : MonoBehaviour
         if (collision.gameObject.name != "Floor")
         {
             humanSpeed = humanPowerSpeed;
+         
 
         }
 
@@ -122,6 +137,67 @@ public class HumanController : MonoBehaviour
             }
         }
 
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.name != "Floor")
+        {
+            if (moveForward)
+            {
+                ileriSurtunmeEffect1.gameObject.SetActive(true);
+                ileriSurtunmeEffect2.gameObject.SetActive(true);
+                geriyeSurtunmeEffect1.gameObject.SetActive(false);
+                geriyeSurtunmeEffect2.gameObject.SetActive(false);
+            }
+            else if (moveBack)
+            {
+                ileriSurtunmeEffect1.gameObject.SetActive(false);
+                ileriSurtunmeEffect2.gameObject.SetActive(false);
+                geriyeSurtunmeEffect1.gameObject.SetActive(true);
+                geriyeSurtunmeEffect2.gameObject.SetActive(true);
+            }
+
+
+        }
+        
+    }
+
+    IEnumerator CheckCharacterMoveForward()
+    {
+        float lastPos = transform.position.x;
+        yield return new WaitForSeconds(0.1f);
+        float currentPos = transform.position.x;
+
+        if (gameObject.name == "HumanDeneme")
+        {
+            if (lastPos > currentPos)
+            {
+                moveForward = true;
+                moveBack = false;
+
+            }
+            else
+            {
+                moveForward = false;
+                moveBack = true;
+            }
+        }
+        else
+        {
+            if (lastPos < currentPos)
+            {
+                moveForward = true;
+                moveBack = false;
+
+
+            }
+            else
+            {
+                moveForward = false;
+                moveBack = true;
+            }
+        }
     }
     
 }

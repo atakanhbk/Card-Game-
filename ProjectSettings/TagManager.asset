@@ -7,6 +7,9 @@ TagManager:
   - EnemyHealth
   - OurHealth
   - Base
+  - Dwarf
+  - Elf
+  - Human
   layers:
   - Default
   - TransparentFX
