@@ -14,6 +14,7 @@ public class ElfController : MonoBehaviour
 
     float timerToDoSomething = 0;
     public GameObject enemyHealth;
+    public GameObject ourHealth;
     [SerializeField] float damagePerSecond;
     [SerializeField] int damage;
     void Start()
@@ -25,10 +26,12 @@ public class ElfController : MonoBehaviour
         if (gameObject.name == "ElfDeneme")
         {
             enemyHealth = GameObject.FindGameObjectWithTag("OurHealth");
+            ourHealth = GameObject.FindGameObjectWithTag("EnemyHealth");
         }
         else
         {
             enemyHealth = GameObject.FindGameObjectWithTag("EnemyHealth");
+            ourHealth = GameObject.FindGameObjectWithTag("OurHealth");
         }
    
     }
@@ -46,6 +49,7 @@ public class ElfController : MonoBehaviour
                 if (timerToDoSomething >= damagePerSecond)
                 {
                     enemyHealth.GetComponent<OurHealthController>().ourHealth -= damage;
+                    ourHealth.GetComponent<EnemyHealthController>().enemyHealth += damage;
                     timerToDoSomething = 0;
                 }
 
@@ -60,6 +64,7 @@ public class ElfController : MonoBehaviour
                 if (timerToDoSomething >= damagePerSecond)
                 {
                     enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage;
+                    ourHealth.GetComponent<OurHealthController>().ourHealth += damage;
                     timerToDoSomething = 0;
                 }
 

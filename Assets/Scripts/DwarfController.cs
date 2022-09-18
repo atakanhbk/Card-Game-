@@ -12,6 +12,7 @@ public class DwarfController : MonoBehaviour
 
     float timerToDoSomething = 0;
     public GameObject enemyHealth;
+    public GameObject ourHealth;
 
     [SerializeField] float damagePerSecond;
     [SerializeField] int damage;
@@ -22,10 +23,12 @@ public class DwarfController : MonoBehaviour
         if (gameObject.name == "DwarfDeneme")
         {
             enemyHealth = GameObject.FindGameObjectWithTag("OurHealth");
+            ourHealth = GameObject.FindGameObjectWithTag("EnemyHealth");
         }
         else
         {
             enemyHealth = GameObject.FindGameObjectWithTag("EnemyHealth");
+            ourHealth = GameObject.FindGameObjectWithTag("OurHealth");
         }
 
 
@@ -44,6 +47,7 @@ public class DwarfController : MonoBehaviour
                 if (timerToDoSomething >= damagePerSecond)
                 {
                     enemyHealth.GetComponent<OurHealthController>().ourHealth -= damage;
+                    ourHealth.GetComponent<EnemyHealthController>().enemyHealth += damage;
                     timerToDoSomething = 0;
                 }
 
@@ -58,6 +62,7 @@ public class DwarfController : MonoBehaviour
                 if (timerToDoSomething >= damagePerSecond)
                 {
                     enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage;
+                    ourHealth.GetComponent<OurHealthController>().ourHealth += damage;
                     timerToDoSomething = 0;
                 }
 

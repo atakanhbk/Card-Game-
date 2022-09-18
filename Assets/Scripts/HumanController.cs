@@ -12,6 +12,7 @@ public class HumanController : MonoBehaviour
     public float humanPowerSpeed;
 
     public GameObject enemyHealth;
+    public GameObject ourHealth;
     float timerToDoSomething = 0;
 
     [SerializeField] float damagePerSecond;
@@ -25,10 +26,12 @@ public class HumanController : MonoBehaviour
         if (gameObject.name == "HumanDeneme")
         {
             enemyHealth = GameObject.FindGameObjectWithTag("OurHealth");
+            ourHealth = GameObject.FindGameObjectWithTag("EnemyHealth");
         }
         else
         {
             enemyHealth = GameObject.FindGameObjectWithTag("EnemyHealth");
+            ourHealth = GameObject.FindGameObjectWithTag("OurHealth");
         }
 
 
@@ -47,6 +50,7 @@ public class HumanController : MonoBehaviour
                 if (timerToDoSomething >= damagePerSecond)
                 {
                     enemyHealth.GetComponent<OurHealthController>().ourHealth -= damage;
+                    ourHealth.GetComponent<EnemyHealthController>().enemyHealth += damage;
                     timerToDoSomething = 0;
                 }
 
@@ -61,6 +65,7 @@ public class HumanController : MonoBehaviour
                 if (timerToDoSomething >= damagePerSecond)
                 {
                     enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage;
+                    ourHealth.GetComponent<OurHealthController>().ourHealth += damage;
                     timerToDoSomething = 0;
                 }
 
