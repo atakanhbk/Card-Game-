@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class HumanController : MonoBehaviour
 {
@@ -17,8 +17,12 @@ public class HumanController : MonoBehaviour
 
     [SerializeField] float damagePerSecond;
     [SerializeField] int damage;
+
+
+    public Canvas damageEffect;
     void Start()
     {
+    
         rb = GetComponent<Rigidbody>();
 
         humanPowerSpeed = ((humanSpeed * humanDurability) / 30);
@@ -90,11 +94,23 @@ public class HumanController : MonoBehaviour
 
         }
 
-        if (collision.gameObject.name == "Base")
+        if (collision.gameObject.tag == "Base")
         {
-            enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage * 3;
-            ourHealth.GetComponent<OurHealthController>().ourHealth += damage * 3;
-            Debug.Log("Working");
+            if (gameObject.name == "HumanDeneme")
+            {
+                Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
+                enemyHealth.GetComponent<OurHealthController>().ourHealth -= damage * 10;
+                ourHealth.GetComponent<EnemyHealthController>().enemyHealth += damage * 10;
+
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
+                enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage * 10;
+                ourHealth.GetComponent<OurHealthController>().ourHealth += damage * 10;
+                Destroy(gameObject);
+            }
         }
 
     }

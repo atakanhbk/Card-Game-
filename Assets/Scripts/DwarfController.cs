@@ -16,6 +16,9 @@ public class DwarfController : MonoBehaviour
 
     [SerializeField] float damagePerSecond;
     [SerializeField] int damage;
+
+
+    public Canvas damageEffect;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -91,10 +94,23 @@ public class DwarfController : MonoBehaviour
 
         }
 
-        if (collision.gameObject.name == "Base")
+        if (collision.gameObject.tag == "Base")
         {
-            enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage *3;
-            ourHealth.GetComponent<OurHealthController>().ourHealth += damage *3 ;
+            if (gameObject.name == "DwarfDeneme")
+            {
+                Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
+                enemyHealth.GetComponent<OurHealthController>().ourHealth -= damage * 10;
+                ourHealth.GetComponent<EnemyHealthController>().enemyHealth += damage * 10;
+
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
+                enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage * 10;
+                ourHealth.GetComponent<OurHealthController>().ourHealth += damage * 10;
+                Destroy(gameObject);
+            }
         }
 
 

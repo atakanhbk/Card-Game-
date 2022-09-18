@@ -129,5 +129,7 @@ MonoBehaviour:
   dwarfDurability: 60
   dwarfPowerSpeed: 0
   enemyHealth: {fileID: 0}
+  ourHealth: {fileID: 0}
   damagePerSecond: 2
   damage: 1
+  damageEffect: {fileID: 2124716750275527146, guid: 5eb812e149eebb042be82a24e648b0e4, type: 3}

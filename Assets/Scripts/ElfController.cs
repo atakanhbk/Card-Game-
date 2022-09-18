@@ -17,6 +17,9 @@ public class ElfController : MonoBehaviour
     public GameObject ourHealth;
     [SerializeField] float damagePerSecond;
     [SerializeField] int damage;
+
+
+    public Canvas damageEffect;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -89,6 +92,7 @@ public class ElfController : MonoBehaviour
         {
             if (gameObject.name == "ElfDeneme")
             {
+                Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
                 enemyHealth.GetComponent<OurHealthController>().ourHealth -= damage * 10;
                 ourHealth.GetComponent<EnemyHealthController>().enemyHealth += damage * 10;
         
@@ -96,6 +100,7 @@ public class ElfController : MonoBehaviour
             }
             else
             {
+                Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
                 enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage*10;
                 ourHealth.GetComponent<OurHealthController>().ourHealth += damage*10;
                 Destroy(gameObject);
