@@ -49,6 +49,11 @@ public class HumanController : MonoBehaviour
         {
             if (transform.position.x <= 0)
             {
+                if (timerToDoSomething == 0)
+                {
+                    enemyHealth.GetComponent<OurHealthController>().ourHealth -= damage;
+                    ourHealth.GetComponent<EnemyHealthController>().enemyHealth += damage;
+                }
                 timerToDoSomething += Time.deltaTime;
 
                 if (timerToDoSomething >= damagePerSecond)
@@ -64,12 +69,16 @@ public class HumanController : MonoBehaviour
         {
             if (transform.position.x >= 0)
             {
+                if (timerToDoSomething== 0)
+                {
+                    enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage;
+                    ourHealth.GetComponent<OurHealthController>().ourHealth += damage;
+                }
                 timerToDoSomething += Time.deltaTime;
 
                 if (timerToDoSomething >= damagePerSecond)
                 {
-                    enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage;
-                    ourHealth.GetComponent<OurHealthController>().ourHealth += damage;
+               
                     timerToDoSomething = 0;
                 }
 
