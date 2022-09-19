@@ -29,8 +29,25 @@ public class DwarfController : MonoBehaviour
 
     bool moveForward;
     bool moveBack;
+    bool isCharacterFightingNow = false;
+
+
+    GameObject skill1;
+    GameObject skill2;
+    GameObject skill3;
+
+    float boostDwarfSpeed;
+    float boostDwarfPowerSpeed;
     void Start()
     {
+
+        skill1 = GameObject.FindGameObjectWithTag("Skill1");
+        skill2 = GameObject.FindGameObjectWithTag("Skill2");
+        skill3 = GameObject.FindGameObjectWithTag("Skill3");
+
+       
+
+
         rb = GetComponent<Rigidbody>();
 
         if (gameObject.name == "DwarfDeneme")
@@ -46,12 +63,46 @@ public class DwarfController : MonoBehaviour
 
 
         dwarfPowerSpeed = ((dwarfSpeed * dwarfDurability) / 30);
+
+        boostDwarfSpeed = dwarfSpeed * 2f;
+        boostDwarfPowerSpeed = dwarfPowerSpeed * 2;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gameObject.tag != "Enemy")
+        {
+            if (skill1.GetComponent<SkillController>().isSkillEnabled)
+            {
+                if (isCharacterFightingNow)
+                {
+                    dwarfSpeed = boostDwarfPowerSpeed;
+                }
+                else
+                {
+                    dwarfSpeed = boostDwarfSpeed;
+                }
+               
+            }
+            else
+            {
+                if (isCharacterFightingNow)
+                {
+                    dwarfSpeed = boostDwarfPowerSpeed / 2f;
+                }
+                else
+                {
+                    dwarfSpeed = boostDwarfSpeed / 2;
+                }
+
+            }
+        }
+
         StartCoroutine(CheckCharacterMoveForward());
+
+
         if (gameObject.name == "DwarfDeneme")
         {
             if (transform.position.x <= 0)
@@ -112,7 +163,7 @@ public class DwarfController : MonoBehaviour
         if (collision.gameObject.name != "Floor")
         {
             dwarfSpeed = dwarfPowerSpeed;
-
+            isCharacterFightingNow = true;
         }
 
         if (collision.gameObject.tag == "Base")
@@ -121,8 +172,7 @@ public class DwarfController : MonoBehaviour
             {
                 Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
                 enemyHealth.GetComponent<OurHealthController>().ourHealth -= damage * 10;
-                ourHealth.GetComponent<EnemyHealthController>().enemyHealth += damage * 10;
-
+                ourHealth.GetComponent<EnemyHealthController>().enemyHealth += damage * 10; 
                 Destroy(gameObject);
             }
             else

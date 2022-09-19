@@ -5434,7 +5434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4070669218761946146, guid: b6afc9b28061b0e4588ff85e7fea0193, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 108.9
+      value: 107.5
       objectReference: {fileID: 0}
     - target: {fileID: 4070669218761946146, guid: b6afc9b28061b0e4588ff85e7fea0193, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5478,7 +5478,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4070669218761946156, guid: b6afc9b28061b0e4588ff85e7fea0193, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070669218761946156, guid: b6afc9b28061b0e4588ff85e7fea0193, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6afc9b28061b0e4588ff85e7fea0193, type: 3}
@@ -6332,6 +6336,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4070669218761946156, guid: 3bc00e6149d5e4b4793e8ef46973cdad, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bc00e6149d5e4b4793e8ef46973cdad, type: 3}
 --- !u!1001 &2041291292
@@ -6470,6 +6478,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 726027851239398924, guid: a11b08d0ae8b46f4fbf1a8a503c9b966, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a11b08d0ae8b46f4fbf1a8a503c9b966, type: 3}
 --- !u!4 &2126693761 stripped
@@ -6585,6 +6597,10 @@ PrefabInstance:
     - target: {fileID: 726027851239398924, guid: a11b08d0ae8b46f4fbf1a8a503c9b966, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 726027851239398924, guid: a11b08d0ae8b46f4fbf1a8a503c9b966, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a11b08d0ae8b46f4fbf1a8a503c9b966, type: 3}
@@ -6885,6 +6901,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DwarfDeneme
       objectReference: {fileID: 0}
+    - target: {fileID: 8426879940251185044, guid: e692cce2c716da84faf0b270b165979d, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8426879940251185050, guid: e692cce2c716da84faf0b270b165979d, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -6985,6 +7005,10 @@ PrefabInstance:
     - target: {fileID: 7043766737697655912, guid: ae1e3c0cc8213fd47a473e248de11985, type: 3}
       propertyPath: m_Name
       value: ElfDeneme
+      objectReference: {fileID: 0}
+    - target: {fileID: 7043766737697655912, guid: ae1e3c0cc8213fd47a473e248de11985, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae1e3c0cc8213fd47a473e248de11985, type: 3}

@@ -13,6 +13,7 @@ TagManager:
   - Skill1
   - Skill2
   - Skill3
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -35,6 +35,11 @@ public class HumanController : MonoBehaviour
     bool moveForward;
     bool moveBack;
 
+    float boostHumanSpeed;
+    float boostHumanPowerSpeed;
+
+
+    bool isCharacterFightingNow = false;
     void Start()
     {
         skill1 = GameObject.FindGameObjectWithTag("Skill1");
@@ -42,7 +47,7 @@ public class HumanController : MonoBehaviour
         skill3 = GameObject.FindGameObjectWithTag("Skill3");
 
         rb = GetComponent<Rigidbody>();
-
+        boostHumanSpeed = humanSpeed * 2;
         humanPowerSpeed = ((humanSpeed * humanDurability) / 30);
 
         if (gameObject.name == "HumanDeneme")
@@ -57,7 +62,8 @@ public class HumanController : MonoBehaviour
         }
 
 
-
+        boostHumanSpeed = humanSpeed * 2f;
+        boostHumanPowerSpeed = humanPowerSpeed * 2;
     }
 
     // Update is called once per frame
@@ -65,11 +71,36 @@ public class HumanController : MonoBehaviour
     {
        StartCoroutine(CheckCharacterMoveForward());
 
-        if (skill1.GetComponent<SkillController>().isSkillEnabled)
+        if (gameObject.tag != "Enemy")
         {
-            Debug.Log("Working");
+
+            if (skill1.GetComponent<SkillController>().isSkillEnabled)
+            {
+                if (isCharacterFightingNow)
+                {
+                    humanSpeed = boostHumanPowerSpeed;
+                }
+                else
+                {
+                    humanSpeed = boostHumanSpeed;
+                }
+
+            }
+            else
+            {
+                if (isCharacterFightingNow)
+                {
+                    humanSpeed = boostHumanPowerSpeed / 2f;
+                }
+                else
+                {
+                    humanSpeed = boostHumanSpeed / 2;
+                }
+
+            }
         }
-     
+
+
 
         if (gameObject.name == "HumanDeneme")
         {
@@ -126,8 +157,8 @@ public class HumanController : MonoBehaviour
         if (collision.gameObject.name != "Floor")
         {
             humanSpeed = humanPowerSpeed;
-         
 
+            isCharacterFightingNow = true;
         }
 
         if (collision.gameObject.tag == "Base")

@@ -30,9 +30,25 @@ public class ElfController : MonoBehaviour
 
     bool moveForward;
     bool moveBack;
+    bool isCharacterFightingNow = false;
+
+    GameObject skill1;
+    GameObject skill2;
+    GameObject skill3;
+
+
+    float boostElfSpeed;
+    float boostElfPowerSpeed;
+
+ 
     void Start()
     {
-        
+        skill1 = GameObject.FindGameObjectWithTag("Skill1");
+        skill2 = GameObject.FindGameObjectWithTag("Skill2");
+        skill3 = GameObject.FindGameObjectWithTag("Skill3");
+
+    
+
         rb = GetComponent<Rigidbody>();
 
         elfPowerSpeed = (elfSpeed * elfDurability) / 30;
@@ -47,12 +63,44 @@ public class ElfController : MonoBehaviour
             enemyHealth = GameObject.FindGameObjectWithTag("EnemyHealth");
             ourHealth = GameObject.FindGameObjectWithTag("OurHealth");
         }
-   
+
+        boostElfSpeed = elfSpeed * 2f;
+        boostElfPowerSpeed = elfPowerSpeed * 2;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (gameObject.tag != "Enemy")
+        {
+
+            if (skill1.GetComponent<SkillController>().isSkillEnabled)
+            {
+                if (isCharacterFightingNow)
+                {
+                    elfSpeed = boostElfPowerSpeed;
+                }
+                else
+                {
+                    elfSpeed = boostElfSpeed;
+                }
+
+            }
+            else
+            {
+                if (isCharacterFightingNow)
+                {
+                    elfSpeed = boostElfPowerSpeed / 2f;
+                }
+                else
+                {
+                    elfSpeed = boostElfSpeed / 2;
+                }
+
+            }
+        }
+
         StartCoroutine(CheckCharacterMoveForward());
         if (gameObject.name == "ElfDeneme")
         {
@@ -134,7 +182,7 @@ public class ElfController : MonoBehaviour
         if (collision.gameObject.name != "Floor")
         {
             elfSpeed = elfPowerSpeed;
-
+            isCharacterFightingNow = true;
         }
     }
 
