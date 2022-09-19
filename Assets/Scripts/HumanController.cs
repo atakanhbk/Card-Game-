@@ -13,7 +13,8 @@ public class HumanController : MonoBehaviour
 
     public GameObject enemyHealth;
     public GameObject ourHealth;
-    float timerToDoSomething = 0;
+    public GameObject speedBoost;
+    
 
     [SerializeField] float damagePerSecond;
     [SerializeField] int damage;
@@ -37,9 +38,12 @@ public class HumanController : MonoBehaviour
 
     float boostHumanSpeed;
     float boostHumanPowerSpeed;
+    float timerToDoSomething = 0;
 
 
     bool isCharacterFightingNow = false;
+
+    
     void Start()
     {
         skill1 = GameObject.FindGameObjectWithTag("Skill1");
@@ -76,6 +80,7 @@ public class HumanController : MonoBehaviour
 
             if (skill1.GetComponent<SkillController>().isSkillEnabled)
             {
+                speedBoost.SetActive(true);
                 if (isCharacterFightingNow)
                 {
                     humanSpeed = boostHumanPowerSpeed;
@@ -88,6 +93,7 @@ public class HumanController : MonoBehaviour
             }
             else
             {
+                speedBoost.SetActive(false);
                 if (isCharacterFightingNow)
                 {
                     humanSpeed = boostHumanPowerSpeed / 2f;

@@ -8,6 +8,7 @@ public class PointerEnterCard : MonoBehaviour
     bool isChosen = false;
 
     public GameObject directionsArrows;
+    public GameObject directionsArrowsForSkill;
 
     public void Pressed()
     {
@@ -25,6 +26,7 @@ public class PointerEnterCard : MonoBehaviour
 
             transform.parent.GetComponent<ChoosenCard>().choosenCard = gameObject;
             directionsArrows.SetActive(true);
+            directionsArrowsForSkill.SetActive(false);
             transform.localPosition = new Vector3(transform.localPosition.x, 40, transform.localPosition.z);
 
           
@@ -35,6 +37,7 @@ public class PointerEnterCard : MonoBehaviour
         {
             isChosen = false;
             directionsArrows.SetActive(false);
+         
             transform.localPosition = new Vector3(transform.localPosition.x, 0, transform.position.z);
         }
 

@@ -12,8 +12,10 @@ public class SkillController : MonoBehaviour
     float skillEffectTimer = 0;
     public bool isSkillEnabled = false;
 
+    public GameObject directionArrowsForSkill;
     public GameObject directionArrows;
 
+    public bool skill2Used = false;
     void Start()
     {
 
@@ -32,13 +34,19 @@ public class SkillController : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.Alpha2) && canSkillUse && gameObject.name == "Skill Icon 2")
         {
-            directionArrows.SetActive(true);
-            /*
+            directionArrowsForSkill.SetActive(true);
+            directionArrows.SetActive(false);
+        
+        }
+
+        if (skill2Used)
+        {
             skillCooldown.SetActive(true);
             canSkillUse = false;
             isSkillEnabled = true;
             skillCooldown.GetComponent<Image>().fillAmount = 1;
-            */
+            directionArrowsForSkill.SetActive(false);
+            skill2Used = false;
         }
 
         else if (Input.GetKeyDown(KeyCode.Alpha3) && canSkillUse && gameObject.name == "Skill Icon 3")
