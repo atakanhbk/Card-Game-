@@ -27,6 +27,9 @@ public class HumanController : MonoBehaviour
     public ParticleSystem geriyeSurtunmeEffect1;
     public ParticleSystem geriyeSurtunmeEffect2;
 
+    GameObject skill1;
+    GameObject skill2;
+    GameObject skill3;
 
 
     bool moveForward;
@@ -34,7 +37,9 @@ public class HumanController : MonoBehaviour
 
     void Start()
     {
-
+        skill1 = GameObject.FindGameObjectWithTag("Skill1");
+        skill2 = GameObject.FindGameObjectWithTag("Skill2");
+        skill3 = GameObject.FindGameObjectWithTag("Skill3");
 
         rb = GetComponent<Rigidbody>();
 
@@ -59,6 +64,13 @@ public class HumanController : MonoBehaviour
     void Update()
     {
        StartCoroutine(CheckCharacterMoveForward());
+
+        if (skill1.GetComponent<SkillController>().isSkillEnabled)
+        {
+            Debug.Log("Working");
+        }
+     
+
         if (gameObject.name == "HumanDeneme")
         {
             if (transform.position.x <= 0)
