@@ -17,6 +17,21 @@ public class ScrollRawImage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Rect currentUv = myRawImage.uvRect;
+
+        currentUv.x -= Time.deltaTime * horizontalSpeed;
+        currentUv.y -= Time.deltaTime * verticalSpeed;
+
+        if (currentUv.x <= -1f || currentUv.x >= 1f)
+        {
+            currentUv.x = 0f;
+        }
+
+        if (currentUv.y <= -1f || currentUv.y >= 1f)
+        {
+            currentUv.y = 0f;
+        }
+
+        myRawImage.uvRect = currentUv;
     }
 }
