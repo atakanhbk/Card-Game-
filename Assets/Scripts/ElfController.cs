@@ -37,9 +37,10 @@ public class ElfController : MonoBehaviour
     float boostElfPowerSpeed;
 
     Animator elfAnim;
- 
+    float startSpeed;
     void Start()
     {
+        startSpeed = elfSpeed;
         elfAnim = transform.GetChild(0).gameObject.GetComponent<Animator>();
 
         skill1 = GameObject.FindGameObjectWithTag("Skill1");
@@ -77,13 +78,15 @@ public class ElfController : MonoBehaviour
             if (skill1.GetComponent<SkillController>().isSkillEnabled)
             {
                 speedBoost.SetActive(true);
-                elfAnim.SetBool("fastRun", true);
+            
                 if (isCharacterFightingNow)
                 {
+                    elfAnim.SetBool("push", true);
                     elfSpeed = boostElfPowerSpeed;
                 }
                 else
                 {
+                    elfAnim.SetBool("fastRun", true);
                     elfSpeed = boostElfSpeed;
                 }
 
@@ -94,6 +97,7 @@ public class ElfController : MonoBehaviour
                 elfAnim.SetBool("fastRun", false);
                 if (isCharacterFightingNow)
                 {
+                    elfAnim.SetBool("push", true);
                     elfSpeed = boostElfPowerSpeed / 2f;
                 }
                 else
@@ -182,10 +186,21 @@ public class ElfController : MonoBehaviour
         }
 
 
-        if (collision.gameObject.name != "Floor")
+        if (collision.gameObject.tag == "Enemy")
         {
             elfSpeed = elfPowerSpeed;
             isCharacterFightingNow = true;
+            elfAnim.SetBool("push", true);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            elfSpeed = startSpeed;
+            isCharacterFightingNow = false;
+            elfAnim.SetBool("push", false);
         }
     }
 
