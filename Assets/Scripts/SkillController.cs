@@ -16,9 +16,12 @@ public class SkillController : MonoBehaviour
     public GameObject directionArrows;
 
     public bool skill2Used = false;
+    bool skill3Used = false;
+
+    public GameObject spawnCharacterController;
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -51,12 +54,15 @@ public class SkillController : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.Alpha3) && canSkillUse && gameObject.name == "Skill Icon 3")
         {
+
+            spawnCharacterController.GetComponent<SpawnCharacterController>().fillAmountTimer = 0.01f;
             skillCooldown.SetActive(true);
             canSkillUse = false;
             isSkillEnabled = true;
             skillCooldown.GetComponent<Image>().fillAmount = 1;
         }
 
+    
 
         if (!canSkillUse)
         {
@@ -73,10 +79,12 @@ public class SkillController : MonoBehaviour
         {
             skillEffectTimer += Time.deltaTime;
 
-            if (skillEffectTimer >= 5)
+            if (skillEffectTimer >= 3)
             {
                 skillEffectTimer = 0;
                 isSkillEnabled = false;
+
+                spawnCharacterController.GetComponent<SpawnCharacterController>().fillAmountTimer = 0.001f;
             }
         }
 

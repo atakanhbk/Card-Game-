@@ -22,11 +22,6 @@ public class HumanController : MonoBehaviour
 
     public Canvas damageEffect;
 
-    public ParticleSystem ileriSurtunmeEffect1;
-    public ParticleSystem ileriSurtunmeEffect2;
-
-    public ParticleSystem geriyeSurtunmeEffect1;
-    public ParticleSystem geriyeSurtunmeEffect2;
 
     GameObject skill1;
     GameObject skill2;
@@ -188,29 +183,7 @@ public class HumanController : MonoBehaviour
 
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.name != "Floor")
-        {
-            if (moveForward)
-            {
-                ileriSurtunmeEffect1.gameObject.SetActive(true);
-                ileriSurtunmeEffect2.gameObject.SetActive(true);
-                geriyeSurtunmeEffect1.gameObject.SetActive(false);
-                geriyeSurtunmeEffect2.gameObject.SetActive(false);
-            }
-            else if (moveBack)
-            {
-                ileriSurtunmeEffect1.gameObject.SetActive(false);
-                ileriSurtunmeEffect2.gameObject.SetActive(false);
-                geriyeSurtunmeEffect1.gameObject.SetActive(true);
-                geriyeSurtunmeEffect2.gameObject.SetActive(true);
-            }
 
-
-        }
-        
-    }
 
     IEnumerator CheckCharacterMoveForward()
     {

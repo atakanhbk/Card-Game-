@@ -21,6 +21,8 @@ public class SpawnCharacterController : MonoBehaviour
     public GameObject humanCardCooldown;
     public GameObject elfCardCooldown;
     public GameObject dwarfCardCooldown;
+
+    public float fillAmountTimer = 0.001f;
     void Start()
     {
      
@@ -39,9 +41,9 @@ public class SpawnCharacterController : MonoBehaviour
 
           
 
-            humanCardCooldown.GetComponent<Image>().fillAmount -= 0.001f;
-            elfCardCooldown.GetComponent<Image>().fillAmount -= 0.001f;
-            dwarfCardCooldown.GetComponent<Image>().fillAmount -= 0.001f;
+            humanCardCooldown.GetComponent<Image>().fillAmount -= fillAmountTimer;
+            elfCardCooldown.GetComponent<Image>().fillAmount -= fillAmountTimer;
+            dwarfCardCooldown.GetComponent<Image>().fillAmount -= fillAmountTimer;
 
             if (humanCardCooldown.GetComponent<Image>().fillAmount == 0 && elfCardCooldown.GetComponent<Image>().fillAmount == 0 && dwarfCardCooldown.GetComponent<Image>().fillAmount == 0)
             {

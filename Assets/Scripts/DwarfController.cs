@@ -13,6 +13,7 @@ public class DwarfController : MonoBehaviour
     float timerToDoSomething = 0;
     public GameObject enemyHealth;
     public GameObject ourHealth;
+    public GameObject speedBoost;
 
     [SerializeField] float damagePerSecond;
     [SerializeField] int damage;
@@ -20,12 +21,6 @@ public class DwarfController : MonoBehaviour
 
     public Canvas damageEffect;
 
-
-    public ParticleSystem ileriSurtunmeEffect1;
-    public ParticleSystem ileriSurtunmeEffect2;
-
-    public ParticleSystem geriyeSurtunmeEffect1;
-    public ParticleSystem geriyeSurtunmeEffect2;
 
     bool moveForward;
     bool moveBack;
@@ -76,6 +71,7 @@ public class DwarfController : MonoBehaviour
         {
             if (skill1.GetComponent<SkillController>().isSkillEnabled)
             {
+                speedBoost.SetActive(true);
                 if (isCharacterFightingNow)
                 {
                     dwarfSpeed = boostDwarfPowerSpeed;
@@ -88,6 +84,7 @@ public class DwarfController : MonoBehaviour
             }
             else
             {
+                speedBoost.SetActive(false);
                 if (isCharacterFightingNow)
                 {
                     dwarfSpeed = boostDwarfPowerSpeed / 2f;
@@ -187,29 +184,7 @@ public class DwarfController : MonoBehaviour
 
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.name != "Floor")
-        {
-            if (moveForward)
-            {
-                ileriSurtunmeEffect1.gameObject.SetActive(true);
-                ileriSurtunmeEffect2.gameObject.SetActive(true);
-                geriyeSurtunmeEffect1.gameObject.SetActive(false);
-                geriyeSurtunmeEffect2.gameObject.SetActive(false);
-            }
-            else if (moveBack)
-            {
-                ileriSurtunmeEffect1.gameObject.SetActive(false);
-                ileriSurtunmeEffect2.gameObject.SetActive(false);
-                geriyeSurtunmeEffect1.gameObject.SetActive(true);
-                geriyeSurtunmeEffect2.gameObject.SetActive(true);
-            }
 
-
-        }
-
-    }
 
     IEnumerator CheckCharacterMoveForward()
     {

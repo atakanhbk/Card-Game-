@@ -11,6 +11,7 @@ public class ElfController : MonoBehaviour
     public float elfPowerSpeed;
 
     public GameObject cardDataBase;
+    public GameObject speedBoost;
 
     float timerToDoSomething = 0;
     public GameObject enemyHealth;
@@ -22,11 +23,6 @@ public class ElfController : MonoBehaviour
     public Canvas damageEffect;
 
 
-    public ParticleSystem ileriSurtunmeEffect1;
-    public ParticleSystem ileriSurtunmeEffect2;
-
-    public ParticleSystem geriyeSurtunmeEffect1;
-    public ParticleSystem geriyeSurtunmeEffect2;
 
     bool moveForward;
     bool moveBack;
@@ -77,6 +73,7 @@ public class ElfController : MonoBehaviour
 
             if (skill1.GetComponent<SkillController>().isSkillEnabled)
             {
+                speedBoost.SetActive(true);
                 if (isCharacterFightingNow)
                 {
                     elfSpeed = boostElfPowerSpeed;
@@ -89,6 +86,7 @@ public class ElfController : MonoBehaviour
             }
             else
             {
+                speedBoost.SetActive(false);
                 if (isCharacterFightingNow)
                 {
                     elfSpeed = boostElfPowerSpeed / 2f;
@@ -186,29 +184,6 @@ public class ElfController : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.name != "Floor")
-        {
-            if (moveForward)
-            {
-                ileriSurtunmeEffect1.gameObject.SetActive(true);
-                ileriSurtunmeEffect2.gameObject.SetActive(true);
-                geriyeSurtunmeEffect1.gameObject.SetActive(false);
-                geriyeSurtunmeEffect2.gameObject.SetActive(false);
-            }
-            else if (moveBack)
-            {
-                ileriSurtunmeEffect1.gameObject.SetActive(false);
-                ileriSurtunmeEffect2.gameObject.SetActive(false);
-                geriyeSurtunmeEffect1.gameObject.SetActive(true);
-                geriyeSurtunmeEffect2.gameObject.SetActive(true);
-            }
-
-
-        }
-
-    }
 
     IEnumerator CheckCharacterMoveForward()
     {
