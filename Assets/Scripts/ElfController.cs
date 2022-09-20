@@ -36,9 +36,12 @@ public class ElfController : MonoBehaviour
     float boostElfSpeed;
     float boostElfPowerSpeed;
 
+    Animator elfAnim;
  
     void Start()
     {
+        elfAnim = transform.GetChild(0).gameObject.GetComponent<Animator>();
+
         skill1 = GameObject.FindGameObjectWithTag("Skill1");
         skill2 = GameObject.FindGameObjectWithTag("Skill2");
         skill3 = GameObject.FindGameObjectWithTag("Skill3");
@@ -74,6 +77,7 @@ public class ElfController : MonoBehaviour
             if (skill1.GetComponent<SkillController>().isSkillEnabled)
             {
                 speedBoost.SetActive(true);
+                elfAnim.SetBool("fastRun", true);
                 if (isCharacterFightingNow)
                 {
                     elfSpeed = boostElfPowerSpeed;
@@ -87,6 +91,7 @@ public class ElfController : MonoBehaviour
             else
             {
                 speedBoost.SetActive(false);
+                elfAnim.SetBool("fastRun", false);
                 if (isCharacterFightingNow)
                 {
                     elfSpeed = boostElfPowerSpeed / 2f;
