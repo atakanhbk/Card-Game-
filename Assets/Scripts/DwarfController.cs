@@ -166,7 +166,7 @@ public class DwarfController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.name != "Floor")
         {
             dwarfSpeed = dwarfPowerSpeed;
             isCharacterFightingNow = true;
@@ -178,8 +178,29 @@ public class DwarfController : MonoBehaviour
             if (gameObject.name == "DwarfDeneme")
             {
                 Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
-                enemyHealth.GetComponent<OurHealthController>().ourHealth -= damage * 10;
-                ourHealth.GetComponent<EnemyHealthController>().enemyHealth += damage * 10; 
+                enemyHealth.GetComponent<OurHealthController>().ourHealth += damage * 10;
+                ourHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage * 10;
+
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
+                enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage * 5;
+                ourHealth.GetComponent<OurHealthController>().ourHealth += damage * 5;
+                Destroy(gameObject);
+            }
+
+        }
+
+        if (collision.gameObject.tag == "EnemyBase")
+        {
+            if (gameObject.name == "DwarfDeneme")
+            {
+                Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
+                enemyHealth.GetComponent<OurHealthController>().ourHealth -= damage * 5;
+                ourHealth.GetComponent<EnemyHealthController>().enemyHealth += damage * 5;
+
                 Destroy(gameObject);
             }
             else
@@ -196,12 +217,14 @@ public class DwarfController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.name != "Floor")
         {
             dwarfSpeed = startSpeed;
             isCharacterFightingNow = false;
             dwarfAnim.SetBool("push", false);
         }
+        
+     
     }
 
 

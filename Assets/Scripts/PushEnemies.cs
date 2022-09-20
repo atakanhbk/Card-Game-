@@ -8,7 +8,7 @@ public class PushEnemies : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.transform.Translate(1.5f, 0, 0);
+            other.gameObject.transform.Translate(0, 0, -1.5f);
         }
     }
 }

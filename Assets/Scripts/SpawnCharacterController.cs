@@ -56,7 +56,7 @@ public class SpawnCharacterController : MonoBehaviour
     {
         if (canSpawn && choosenCard.GetComponent<ChoosenCard>().choosenCard.gameObject.name == "HumanCard" && !spawnedCharacter)
         {
-            Instantiate(human, spawnTransformation[spawnTransformationNumber].transform.position, Quaternion.identity);
+            Instantiate(human, spawnTransformation[spawnTransformationNumber].transform.position+Vector3.up*9, Quaternion.Euler(0, 90, 0));
             canSpawn = false;
             spawnedCharacter = true;
 

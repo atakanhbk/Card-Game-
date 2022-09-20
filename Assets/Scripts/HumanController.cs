@@ -38,9 +38,14 @@ public class HumanController : MonoBehaviour
 
     bool isCharacterFightingNow = false;
 
-    
+    Animator humanAnim;
+
+    float startSpeed;
     void Start()
     {
+        humanAnim = transform.GetChild(0).gameObject.GetComponent<Animator>();
+        startSpeed = humanSpeed;
+
         skill1 = GameObject.FindGameObjectWithTag("Skill1");
         skill2 = GameObject.FindGameObjectWithTag("Skill2");
         skill3 = GameObject.FindGameObjectWithTag("Skill3");
@@ -73,15 +78,17 @@ public class HumanController : MonoBehaviour
         if (gameObject.tag != "Enemy")
         {
 
-            if (skill1.GetComponent<SkillController>().isSkillEnabled)
+            if (skill1.GetComponent<SkillController>().isSkillEnabled && gameObject.name != "HumanDeneme")
             {
                 speedBoost.SetActive(true);
                 if (isCharacterFightingNow)
                 {
+                    humanAnim.SetBool("push", true);
                     humanSpeed = boostHumanPowerSpeed;
                 }
                 else
                 {
+                    humanAnim.SetBool("fastRun", true);
                     humanSpeed = boostHumanSpeed;
                 }
 
@@ -89,8 +96,10 @@ public class HumanController : MonoBehaviour
             else
             {
                 speedBoost.SetActive(false);
+                humanAnim.SetBool("fastRun", false);
                 if (isCharacterFightingNow)
                 {
+                    humanAnim.SetBool("push", true);
                     humanSpeed = boostHumanPowerSpeed / 2f;
                 }
                 else
@@ -160,7 +169,10 @@ public class HumanController : MonoBehaviour
             humanSpeed = humanPowerSpeed;
 
             isCharacterFightingNow = true;
+            humanAnim.SetBool("push", true);
         }
+
+
 
         if (collision.gameObject.tag == "Base")
         {
@@ -170,19 +182,51 @@ public class HumanController : MonoBehaviour
                 enemyHealth.GetComponent<OurHealthController>().ourHealth -= damage * 10;
                 ourHealth.GetComponent<EnemyHealthController>().enemyHealth += damage * 10;
 
-                Destroy(gameObject);
+              
             }
             else
             {
                 Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
                 enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage * 10;
                 ourHealth.GetComponent<OurHealthController>().ourHealth += damage * 10;
-                Destroy(gameObject);
+              
             }
+            Destroy(gameObject);
+
+        }
+
+        if (collision.gameObject.tag == "EnemyBase")
+        {
+
+            if (gameObject.name == "HumanDeneme")
+            {
+                Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
+                enemyHealth.GetComponent<OurHealthController>().ourHealth += damage * 10;
+                ourHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage * 10;
+
+            
+            }
+            else
+            {
+                Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
+                enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage * 10;
+                ourHealth.GetComponent<OurHealthController>().ourHealth += damage * 10;
+               
+            }
+            Destroy(gameObject);
         }
 
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.name != "Floor")
+        {
+            humanSpeed = startSpeed;
+            isCharacterFightingNow = false;
+            humanAnim.SetBool("push", false);
+        }
+    }
 
 
     IEnumerator CheckCharacterMoveForward()
