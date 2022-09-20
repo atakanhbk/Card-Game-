@@ -33,9 +33,14 @@ public class DwarfController : MonoBehaviour
 
     float boostDwarfSpeed;
     float boostDwarfPowerSpeed;
+
+    Animator dwarfAnim;
+
+    float startSpeed;
     void Start()
     {
-
+        startSpeed = dwarfSpeed;
+        dwarfAnim = transform.GetChild(0).gameObject.GetComponent<Animator>();
         skill1 = GameObject.FindGameObjectWithTag("Skill1");
         skill2 = GameObject.FindGameObjectWithTag("Skill2");
         skill3 = GameObject.FindGameObjectWithTag("Skill3");
@@ -74,10 +79,12 @@ public class DwarfController : MonoBehaviour
                 speedBoost.SetActive(true);
                 if (isCharacterFightingNow)
                 {
+                    dwarfAnim.SetBool("push", true);
                     dwarfSpeed = boostDwarfPowerSpeed;
                 }
                 else
                 {
+                    dwarfAnim.SetBool("fastRun", true);
                     dwarfSpeed = boostDwarfSpeed;
                 }
                
@@ -85,8 +92,10 @@ public class DwarfController : MonoBehaviour
             else
             {
                 speedBoost.SetActive(false);
+                dwarfAnim.SetBool("fastRun", false);
                 if (isCharacterFightingNow)
                 {
+                    dwarfAnim.SetBool("push", true);
                     dwarfSpeed = boostDwarfPowerSpeed / 2f;
                 }
                 else
@@ -157,10 +166,11 @@ public class DwarfController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.name != "Floor")
+        if (collision.gameObject.tag == "Enemy")
         {
             dwarfSpeed = dwarfPowerSpeed;
             isCharacterFightingNow = true;
+            dwarfAnim.SetBool("push", true);
         }
 
         if (collision.gameObject.tag == "Base")
@@ -182,6 +192,16 @@ public class DwarfController : MonoBehaviour
         }
 
 
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            dwarfSpeed = startSpeed;
+            isCharacterFightingNow = false;
+            dwarfAnim.SetBool("push", false);
+        }
     }
 
 

@@ -78,7 +78,7 @@ public class SpawnCharacterController : MonoBehaviour
 
         else if (canSpawn && choosenCard.GetComponent<ChoosenCard>().choosenCard.gameObject.name == "DwarfCard" && !spawnedCharacter)
         {
-            Instantiate(dwarf, spawnTransformation[spawnTransformationNumber].transform.position, Quaternion.identity);
+            Instantiate(dwarf, spawnTransformation[spawnTransformationNumber].transform.position, Quaternion.Euler(0, 90, 0));
             canSpawn = false;
             spawnedCharacter = true;
 
