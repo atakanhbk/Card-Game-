@@ -106,6 +106,61 @@ public class DwarfController : MonoBehaviour
             }
         }
 
+
+
+        if (gameObject.tag == "Enemy")
+        {
+
+            if (AIController.speedBoostActivate)
+            {
+
+                if (gameObject.tag == "Enemy")
+                {
+                    speedBoost.SetActive(true);
+                    if (isCharacterFightingNow)
+                    {
+                        dwarfAnim.SetBool("push", true);
+                        dwarfSpeed = boostDwarfPowerSpeed;
+                    }
+                    else
+                    {
+                        dwarfAnim.SetBool("fastRun", true);
+                        dwarfSpeed = boostDwarfSpeed;
+                    }
+
+                }
+                else
+                {
+                    speedBoost.SetActive(false);
+                    dwarfAnim.SetBool("fastRun", false);
+                    if (isCharacterFightingNow)
+                    {
+                        dwarfAnim.SetBool("push", true);
+                        dwarfSpeed = boostDwarfPowerSpeed / 2f;
+                    }
+                    else
+                    {
+                        dwarfSpeed = boostDwarfSpeed / 2;
+                    }
+
+                }
+            }
+            else
+            {
+                speedBoost.SetActive(false);
+                dwarfAnim.SetBool("fastRun", false);
+                if (isCharacterFightingNow)
+                {
+                    dwarfAnim.SetBool("push", true);
+                    dwarfSpeed = boostDwarfPowerSpeed / 2f;
+                }
+                else
+                {
+                    dwarfSpeed = boostDwarfSpeed / 2;
+                }
+            }
+        }
+
         StartCoroutine(CheckCharacterMoveForward());
 
 

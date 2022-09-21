@@ -35,6 +35,7 @@ public class HumanController : MonoBehaviour
     float boostHumanPowerSpeed;
     float timerToDoSomething = 0;
 
+    
 
     bool isCharacterFightingNow = false;
 
@@ -77,9 +78,10 @@ public class HumanController : MonoBehaviour
 
         if (gameObject.tag != "Enemy")
         {
-
+          
             if (skill1.GetComponent<SkillController>().isSkillEnabled && gameObject.name != "HumanDeneme")
             {
+                Debug.Log("Working");
                 speedBoost.SetActive(true);
                 if (isCharacterFightingNow)
                 {
@@ -95,6 +97,7 @@ public class HumanController : MonoBehaviour
             }
             else
             {
+                Debug.Log("Else Working");
                 speedBoost.SetActive(false);
                 humanAnim.SetBool("fastRun", false);
                 if (isCharacterFightingNow)
@@ -108,6 +111,61 @@ public class HumanController : MonoBehaviour
                 }
 
             }
+        }
+
+
+
+        if (gameObject.tag == "Enemy")
+        {
+            if (AIController.speedBoostActivate)
+            {
+
+                if (gameObject.tag == "Enemy")
+                {
+                    speedBoost.SetActive(true);
+                    if (isCharacterFightingNow)
+                    {
+                        humanAnim.SetBool("push", true);
+                        humanSpeed = boostHumanPowerSpeed;
+                    }
+                    else
+                    {
+                        humanAnim.SetBool("fastRun", true);
+                        humanSpeed = boostHumanSpeed;
+                    }
+
+                }
+                else
+                {
+                    speedBoost.SetActive(false);
+                    humanAnim.SetBool("fastRun", false);
+                    if (isCharacterFightingNow)
+                    {
+                        humanAnim.SetBool("push", true);
+                        humanSpeed = boostHumanPowerSpeed / 2f;
+                    }
+                    else
+                    {
+                        humanSpeed = boostHumanSpeed / 2;
+                    }
+
+                }
+            }
+            else
+            {
+                speedBoost.SetActive(false);
+                humanAnim.SetBool("fastRun", false);
+                if (isCharacterFightingNow)
+                {
+                    humanAnim.SetBool("push", true);
+                    humanSpeed = boostHumanPowerSpeed / 2f;
+                }
+                else
+                {
+                    humanSpeed = boostHumanSpeed / 2;
+                }
+            }
+
         }
 
 

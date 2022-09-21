@@ -110,6 +110,61 @@ public class ElfController : MonoBehaviour
             }
         }
 
+
+
+        if (gameObject.tag == "Enemy")
+        {
+
+            if (AIController.speedBoostActivate)
+            {
+
+                if (gameObject.tag == "Enemy")
+                {
+                    speedBoost.SetActive(true);
+                    if (isCharacterFightingNow)
+                    {
+                        elfAnim.SetBool("push", true);
+                        elfSpeed = boostElfPowerSpeed;
+                    }
+                    else
+                    {
+                        elfAnim.SetBool("fastRun", true);
+                        elfSpeed = boostElfSpeed;
+                    }
+
+                }
+                else
+                {
+                    speedBoost.SetActive(false);
+                    elfAnim.SetBool("fastRun", false);
+                    if (isCharacterFightingNow)
+                    {
+                        elfAnim.SetBool("push", true);
+                        elfSpeed = boostElfPowerSpeed / 2f;
+                    }
+                    else
+                    {
+                        elfSpeed = boostElfSpeed / 2;
+                    }
+
+                }
+            }
+            else
+            {
+                speedBoost.SetActive(false);
+                elfAnim.SetBool("fastRun", false);
+                if (isCharacterFightingNow)
+                {
+                    elfAnim.SetBool("push", true);
+                    elfSpeed = boostElfPowerSpeed / 2f;
+                }
+                else
+                {
+                    elfSpeed = boostElfSpeed / 2;
+                }
+            }
+        }
+
         StartCoroutine(CheckCharacterMoveForward());
         if (gameObject.name == "ElfDeneme")
         {
