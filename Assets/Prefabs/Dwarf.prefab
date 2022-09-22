@@ -236,6 +236,7 @@ MonoBehaviour:
   damagePerSecond: 2
   damage: 1
   damageEffect: {fileID: 2124716750275527146, guid: 5eb812e149eebb042be82a24e648b0e4, type: 3}
+  baseHitEffect: {fileID: 2383570691834216364, guid: 2cbe005ebcd060d44a2bb3215692522e, type: 3}
 --- !u!1 &4215346095128136612
 GameObject:
   m_ObjectHideFlags: 0

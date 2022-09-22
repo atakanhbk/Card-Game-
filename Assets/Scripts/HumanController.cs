@@ -42,6 +42,8 @@ public class HumanController : MonoBehaviour
     Animator humanAnim;
 
     float startSpeed;
+
+    public ParticleSystem baseHitEffect;
     void Start()
     {
         humanAnim = transform.GetChild(0).gameObject.GetComponent<Animator>();
@@ -234,6 +236,7 @@ public class HumanController : MonoBehaviour
 
         if (collision.gameObject.tag == "Base")
         {
+            Instantiate(baseHitEffect, transform.position + Vector3.up * 5, Quaternion.identity);
             if (gameObject.name == "HumanDeneme")
             {
                 Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
@@ -244,6 +247,7 @@ public class HumanController : MonoBehaviour
             }
             else
             {
+              
                 Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
                 enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage * 10;
                 ourHealth.GetComponent<OurHealthController>().ourHealth += damage * 10;
@@ -255,7 +259,7 @@ public class HumanController : MonoBehaviour
 
         if (collision.gameObject.tag == "EnemyBase")
         {
-
+            Instantiate(baseHitEffect, transform.position + Vector3.up * 5, Quaternion.identity);
             if (gameObject.name == "HumanDeneme")
             {
                 Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));

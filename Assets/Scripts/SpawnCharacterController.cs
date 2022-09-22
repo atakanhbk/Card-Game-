@@ -8,7 +8,7 @@ public class SpawnCharacterController : MonoBehaviour
     public GameObject elf;
     public GameObject dwarf;
     public GameObject choosenCard;
-
+  
     public List<GameObject> spawnTransformation = new List<GameObject>();
 
     public bool canSpawn = false;
@@ -23,6 +23,8 @@ public class SpawnCharacterController : MonoBehaviour
     public GameObject dwarfCardCooldown;
 
     public float fillAmountTimer = 0.001f;
+
+    public ParticleSystem spawnEffect;
     void Start()
     {
      
@@ -54,9 +56,12 @@ public class SpawnCharacterController : MonoBehaviour
 
     void DecideSpawnObject()
     {
+     
         if (canSpawn && choosenCard.GetComponent<ChoosenCard>().choosenCard.gameObject.name == "HumanCard" && !spawnedCharacter)
         {
+            Instantiate(spawnEffect, spawnTransformation[spawnTransformationNumber].transform.position+Vector3.up*10, Quaternion.identity);
             Instantiate(human, spawnTransformation[spawnTransformationNumber].transform.position+Vector3.up*9, Quaternion.Euler(0, 90, 0));
+            
             canSpawn = false;
             spawnedCharacter = true;
 
@@ -67,6 +72,7 @@ public class SpawnCharacterController : MonoBehaviour
 
         else if (canSpawn && choosenCard.GetComponent<ChoosenCard>().choosenCard.gameObject.name == "ElfCard" && !spawnedCharacter)
         {
+            Instantiate(spawnEffect, spawnTransformation[spawnTransformationNumber].transform.position + Vector3.up * 10, Quaternion.identity);
             Instantiate(elf, spawnTransformation[spawnTransformationNumber].transform.position, Quaternion.Euler(0,90,0));
             canSpawn = false;
             spawnedCharacter = true;
@@ -78,6 +84,7 @@ public class SpawnCharacterController : MonoBehaviour
 
         else if (canSpawn && choosenCard.GetComponent<ChoosenCard>().choosenCard.gameObject.name == "DwarfCard" && !spawnedCharacter)
         {
+            Instantiate(spawnEffect, spawnTransformation[spawnTransformationNumber].transform.position + Vector3.up * 10, Quaternion.identity);
             Instantiate(dwarf, spawnTransformation[spawnTransformationNumber].transform.position, Quaternion.Euler(0, 90, 0));
             canSpawn = false;
             spawnedCharacter = true;

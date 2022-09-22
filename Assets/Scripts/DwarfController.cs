@@ -37,6 +37,8 @@ public class DwarfController : MonoBehaviour
     Animator dwarfAnim;
 
     float startSpeed;
+
+    public ParticleSystem baseHitEffect;
     void Start()
     {
         startSpeed = dwarfSpeed;
@@ -230,19 +232,20 @@ public class DwarfController : MonoBehaviour
 
         if (collision.gameObject.tag == "Base")
         {
+            Instantiate(baseHitEffect, transform.position + Vector3.up * 5, Quaternion.identity);
             if (gameObject.name == "DwarfDeneme")
             {
                 Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
-                enemyHealth.GetComponent<OurHealthController>().ourHealth += damage * 10;
-                ourHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage * 10;
+                enemyHealth.GetComponent<OurHealthController>().ourHealth -= damage * 10;
+                ourHealth.GetComponent<EnemyHealthController>().enemyHealth += damage * 10;
 
                 Destroy(gameObject);
             }
             else
             {
                 Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
-                enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage * 5;
-                ourHealth.GetComponent<OurHealthController>().ourHealth += damage * 5;
+                enemyHealth.GetComponent<EnemyHealthController>().enemyHealth -= damage * 10;
+                ourHealth.GetComponent<OurHealthController>().ourHealth += damage * 10;
                 Destroy(gameObject);
             }
 
@@ -250,6 +253,7 @@ public class DwarfController : MonoBehaviour
 
         if (collision.gameObject.tag == "EnemyBase")
         {
+            Instantiate(baseHitEffect, transform.position + Vector3.up * 5, Quaternion.identity);
             if (gameObject.name == "DwarfDeneme")
             {
                 Instantiate(damageEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
