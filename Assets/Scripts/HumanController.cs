@@ -213,11 +213,12 @@ public class HumanController : MonoBehaviour
         }
         if (gameObject.name =="HumanDeneme")
         {
-            rb.velocity = new Vector3(-humanSpeed, 0, 0);
+            rb.velocity = new Vector3(0, 0, humanSpeed);
         }
         else
         {
-            rb.velocity = new Vector3(humanSpeed, 0, 0);
+           rb.velocity = new Vector3(0, 0, -humanSpeed);
+      
         }
     }
 

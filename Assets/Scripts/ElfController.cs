@@ -210,11 +210,11 @@ public class ElfController : MonoBehaviour
 
         if (gameObject.name == "ElfDeneme")
         {
-            rb.velocity = new Vector3(-elfSpeed, 0, 0);
+            rb.velocity = new Vector3(0, 0, elfSpeed);
         }
         else
         {
-            rb.velocity = new Vector3(elfSpeed, 0, 0);
+            rb.velocity = new Vector3(0, 0, -elfSpeed);
         }
     }
 

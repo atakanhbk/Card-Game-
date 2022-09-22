@@ -13,6 +13,8 @@ public class MovementPunch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(1, 0, 0);
+     
+            transform.Translate(0.5f, 0, 0);
+    
     }
 }

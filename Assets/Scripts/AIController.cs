@@ -39,7 +39,7 @@ public class AIController : MonoBehaviour
 
             if (characterList[randomCharacter].gameObject.tag == "Human")
             {
-                var spawnedCharacter = Instantiate(characterList[randomCharacter], directionList[randomDirection].transform.position + Vector3.up * 10, Quaternion.Euler(0, -90, 0));
+                var spawnedCharacter = Instantiate(characterList[randomCharacter], directionList[randomDirection].transform.position, Quaternion.Euler(0,0, 0));
 
                 spawnedCharacter.gameObject.name = "" + spawnedCharacter.gameObject.tag + "Deneme";
                 spawnedCharacter.gameObject.tag = "Enemy";
@@ -47,7 +47,7 @@ public class AIController : MonoBehaviour
             }
             else
             {
-                var spawnedCharacter = Instantiate(characterList[randomCharacter], directionList[randomDirection].transform.position, Quaternion.Euler(0, -90, 0));
+                var spawnedCharacter = Instantiate(characterList[randomCharacter], directionList[randomDirection].transform.position, Quaternion.Euler(0, 0, 0));
 
                 spawnedCharacter.gameObject.name = "" + spawnedCharacter.gameObject.tag + "Deneme";
                 spawnedCharacter.gameObject.tag = "Enemy";
@@ -66,7 +66,8 @@ public class AIController : MonoBehaviour
 
             if (skillCooldownTimer >= 10)
             {
-            int chooseRandomSkill = Random.Range(0,3);
+            //int chooseRandomSkill = Random.Range(0,3);
+            int chooseRandomSkill = 1;
 
                 if (chooseRandomSkill == 0)
                 {
@@ -77,7 +78,7 @@ public class AIController : MonoBehaviour
                 else if (chooseRandomSkill == 1)
                 {
                 int randomDirection = Random.Range(0, 4);
-                var spawnedSkill =  Instantiate(AngryFist, directionList[randomDirection].transform.position, Quaternion.Euler(0,180,0));
+                var spawnedSkill =  Instantiate(AngryFist, directionList[randomDirection].transform.position, Quaternion.Euler(0,-90,0));
                 spawnedSkill.gameObject.tag = "Enemy";
                 skillCooldownTimer = 0;
                 }

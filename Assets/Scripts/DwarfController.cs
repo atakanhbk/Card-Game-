@@ -212,11 +212,11 @@ public class DwarfController : MonoBehaviour
 
         if (gameObject.name == "DwarfDeneme")
         {
-            rb.velocity = new Vector3(-dwarfSpeed, 0, 0);
+            rb.velocity = new Vector3(0, 0, dwarfSpeed);
         }
         else
         {
-            rb.velocity = new Vector3(dwarfSpeed, 0, 0);
+            rb.velocity = new Vector3(0, 0, -dwarfSpeed);
         }
     }
 

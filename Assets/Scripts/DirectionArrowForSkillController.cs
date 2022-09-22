@@ -9,7 +9,7 @@ public class DirectionArrowForSkillController : MonoBehaviour
     public GameObject skill2;
     public void SendPunchForSkill2()
     {
-        Instantiate(punch,transform.position,Quaternion.identity);
+        Instantiate(punch,transform.position, Quaternion.Euler(0, 90, 0));
 
         skill2.GetComponent<SkillController>().skill2Used = true;
     }
