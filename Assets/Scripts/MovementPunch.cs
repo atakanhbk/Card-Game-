@@ -14,7 +14,8 @@ public class MovementPunch : MonoBehaviour
     void Update()
     {
      
-            transform.Translate(0.5f, 0, 0);
+            transform.Translate(0.3f, 0, 0);
+        transform.Rotate(new Vector3(2, 0, 0));
     
     }
 }
