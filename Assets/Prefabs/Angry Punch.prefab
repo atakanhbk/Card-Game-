@@ -314,8 +314,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198762558225477380, guid: 397e012837ecd81479570c5f50ef748c, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198762558225477380, guid: 397e012837ecd81479570c5f50ef748c, type: 3}
       propertyPath: playOnAwake
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198762558225477380, guid: 397e012837ecd81479570c5f50ef748c, type: 3}
+      propertyPath: simulationSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 198762558225477380, guid: 397e012837ecd81479570c5f50ef748c, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -330,12 +338,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198907304285384830, guid: 397e012837ecd81479570c5f50ef748c, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198907304285384830, guid: 397e012837ecd81479570c5f50ef748c, type: 3}
       propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198907304285384830, guid: 397e012837ecd81479570c5f50ef748c, type: 3}
       propertyPath: simulationSpeed
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 198907304285384830, guid: 397e012837ecd81479570c5f50ef748c, type: 3}
       propertyPath: startDelay.scalar
@@ -352,6 +364,18 @@ PrefabInstance:
     - target: {fileID: 198907304285384830, guid: 397e012837ecd81479570c5f50ef748c, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 198907304285384830, guid: 397e012837ecd81479570c5f50ef748c, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198907304285384830, guid: 397e012837ecd81479570c5f50ef748c, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.39954376
+      objectReference: {fileID: 0}
+    - target: {fileID: 198907304285384830, guid: 397e012837ecd81479570c5f50ef748c, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198992564529750742, guid: 397e012837ecd81479570c5f50ef748c, type: 3}
       propertyPath: playOnAwake
