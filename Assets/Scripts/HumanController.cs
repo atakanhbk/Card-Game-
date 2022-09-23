@@ -225,6 +225,7 @@ public class HumanController : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
+
         if (collision.gameObject.name != "Floor")
         {
             humanSpeed = humanPowerSpeed;

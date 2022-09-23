@@ -220,8 +220,8 @@ public class ElfController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-  
 
+ 
         if (collision.gameObject.tag == "Base")
         {
             Instantiate(baseHitEffect, transform.position + Vector3.up * 5, Quaternion.identity);

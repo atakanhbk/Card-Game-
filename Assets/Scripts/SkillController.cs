@@ -17,11 +17,13 @@ public class SkillController : MonoBehaviour
 
     public bool skill2Used = false;
     bool skill3Used = false;
-
+    public GameObject Money;
     public GameObject spawnCharacterController;
+
+    int moneyAmount;
     void Start()
     {
-        
+        moneyAmount = Money.GetComponent<MoneyText>().moneyAmount;
     }
 
     // Update is called once per frame
@@ -29,6 +31,8 @@ public class SkillController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) && canSkillUse && gameObject.name =="Skill Icon 1")
         {
+        
+            moneyAmount -= 100;
             skillCooldown.SetActive(true);
             canSkillUse = false;
             isSkillEnabled = true;
