@@ -19,78 +19,94 @@ public class SkillController : MonoBehaviour
     bool skill3Used = false;
     public GameObject Money;
     public GameObject spawnCharacterController;
+    public GameObject cantUseSkill;
 
-    int moneyAmount;
     void Start()
     {
-        moneyAmount = Money.GetComponent<MoneyText>().moneyAmount;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && canSkillUse && gameObject.name =="Skill Icon 1")
+        if (Money.GetComponent<MoneyText>().moneyAmount <= 0)
         {
-        
-            moneyAmount -= 100;
-            skillCooldown.SetActive(true);
-            canSkillUse = false;
-            isSkillEnabled = true;
-            skillCooldown.GetComponent<Image>().fillAmount = 1;
+            cantUseSkill.SetActive(true);
+            skillCooldown.GetComponent<Image>().fillAmount = 0;
+            skillCooldown.GetComponent<Image>().fillAmount = 0;
+            skillCooldown.GetComponent<Image>().fillAmount = 0;
         }
 
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && canSkillUse && gameObject.name == "Skill Icon 2")
+        else
         {
-            directionArrowsForSkill.SetActive(true);
-            directionArrows.SetActive(false);
-        
-        }
-
-        if (skill2Used)
-        {
-            skillCooldown.SetActive(true);
-            canSkillUse = false;
-            isSkillEnabled = true;
-            skillCooldown.GetComponent<Image>().fillAmount = 1;
-            directionArrowsForSkill.SetActive(false);
-            skill2Used = false;
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Alpha3) && canSkillUse && gameObject.name == "Skill Icon 3")
-        {
-
-            spawnCharacterController.GetComponent<SpawnCharacterController>().fillAmountTimer = 0.01f;
-            skillCooldown.SetActive(true);
-            canSkillUse = false;
-            isSkillEnabled = true;
-            skillCooldown.GetComponent<Image>().fillAmount = 1;
-        }
-
-    
-
-        if (!canSkillUse)
-        {
-           
-            skillCooldown.GetComponent<Image>().fillAmount -= 0.0005f;
-
-            if (skillCooldown.GetComponent<Image>().fillAmount <= 0)
+            cantUseSkill.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.Alpha1) && canSkillUse && gameObject.name == "Skill Icon 1")
             {
-                canSkillUse = true;
+
+                Money.GetComponent<MoneyText>().moneyAmount -= 500;
+                Money.GetComponent<MoneyText>().goldOrb.GetComponent<Image>().fillAmount -= 0.16f;
+                skillCooldown.SetActive(true);
+                canSkillUse = false;
+                isSkillEnabled = true;
+                skillCooldown.GetComponent<Image>().fillAmount = 1;
+            }
+
+            else if (Input.GetKeyDown(KeyCode.Alpha2) && canSkillUse && gameObject.name == "Skill Icon 2")
+            {
+                directionArrowsForSkill.SetActive(true);
+                directionArrows.SetActive(false);
+
+            }
+
+            if (skill2Used)
+            {
+                Money.GetComponent<MoneyText>().moneyAmount -= 500;
+                Money.GetComponent<MoneyText>().goldOrb.GetComponent<Image>().fillAmount -= 0.16f;
+                skillCooldown.SetActive(true);
+                canSkillUse = false;
+                isSkillEnabled = true;
+                skillCooldown.GetComponent<Image>().fillAmount = 1;
+                directionArrowsForSkill.SetActive(false);
+                skill2Used = false;
+            }
+
+            else if (Input.GetKeyDown(KeyCode.Alpha3) && canSkillUse && gameObject.name == "Skill Icon 3")
+            {
+                Money.GetComponent<MoneyText>().moneyAmount -= 1500;
+                Money.GetComponent<MoneyText>().goldOrb.GetComponent<Image>().fillAmount -= 0.5f;
+                spawnCharacterController.GetComponent<SpawnCharacterController>().fillAmountTimer = 0.01f;
+                skillCooldown.SetActive(true);
+                canSkillUse = false;
+                isSkillEnabled = true;
+                skillCooldown.GetComponent<Image>().fillAmount = 1;
+            }
+
+
+
+            if (!canSkillUse)
+            {
+
+                skillCooldown.GetComponent<Image>().fillAmount -= 0.0005f;
+
+                if (skillCooldown.GetComponent<Image>().fillAmount <= 0)
+                {
+                    canSkillUse = true;
+                }
+            }
+
+            if (isSkillEnabled)
+            {
+                skillEffectTimer += Time.deltaTime;
+
+                if (skillEffectTimer >= 3)
+                {
+                    skillEffectTimer = 0;
+                    isSkillEnabled = false;
+
+                    spawnCharacterController.GetComponent<SpawnCharacterController>().fillAmountTimer = 0.001f;
+                }
             }
         }
-
-        if (isSkillEnabled)
-        {
-            skillEffectTimer += Time.deltaTime;
-
-            if (skillEffectTimer >= 3)
-            {
-                skillEffectTimer = 0;
-                isSkillEnabled = false;
-
-                spawnCharacterController.GetComponent<SpawnCharacterController>().fillAmountTimer = 0.001f;
-            }
-        }
+     
 
 
     }
