@@ -174,7 +174,7 @@ public class HumanController : MonoBehaviour
 
         if (gameObject.name == "HumanDeneme")
         {
-            if (transform.position.x <= 0)
+            if (transform.position.z >= 0)
             {
                 if (timerToDoSomething == 0)
                 {
@@ -194,7 +194,7 @@ public class HumanController : MonoBehaviour
         }
         else
         {
-            if (transform.position.x >= 0)
+            if (transform.position.z <= 0)
             {
                 if (timerToDoSomething== 0)
                 {

@@ -168,7 +168,7 @@ public class DwarfController : MonoBehaviour
 
         if (gameObject.name == "DwarfDeneme")
         {
-            if (transform.position.x <= 0)
+            if (transform.position.z >= 0)
             {
                 if (timerToDoSomething == 0)
                 {
@@ -188,7 +188,7 @@ public class DwarfController : MonoBehaviour
         }
         else
         {
-            if (transform.position.x >= 0)
+            if (transform.position.z <= 0)
             {
                 if (timerToDoSomething == 0)
                 {

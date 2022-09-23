@@ -168,7 +168,7 @@ public class ElfController : MonoBehaviour
         StartCoroutine(CheckCharacterMoveForward());
         if (gameObject.name == "ElfDeneme")
         {
-            if (transform.position.x <= 0)
+            if (transform.position.z >= 0)
             {
                 if (timerToDoSomething == 0)
                 {
@@ -189,7 +189,7 @@ public class ElfController : MonoBehaviour
         }
         else
         {
-            if (transform.position.x >= 0)
+            if (transform.position.z <= 0)
             {
                 if (timerToDoSomething == 0)
                 {
