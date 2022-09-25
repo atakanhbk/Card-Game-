@@ -238,6 +238,7 @@ MonoBehaviour:
   damage: 1
   damageEffect: {fileID: 2124716750275527146, guid: 5eb812e149eebb042be82a24e648b0e4, type: 3}
   baseHitEffect: {fileID: 2383570691834216364, guid: 2cbe005ebcd060d44a2bb3215692522e, type: 3}
+  hammerMoveEffect: {fileID: 1822375055658559174, guid: d724783e7a6ed91458058d579e8d532a, type: 3}
 --- !u!1 &4283728459121169513
 GameObject:
   m_ObjectHideFlags: 0

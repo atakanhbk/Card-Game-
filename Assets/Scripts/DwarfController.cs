@@ -39,6 +39,7 @@ public class DwarfController : MonoBehaviour
     float startSpeed;
 
     public ParticleSystem baseHitEffect;
+    public ParticleSystem hammerMoveEffect;
     void Start()
     {
         startSpeed = dwarfSpeed;
@@ -285,6 +286,38 @@ public class DwarfController : MonoBehaviour
         
      
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "Angry Punch(Clone)" && gameObject.tag == "Dwarf" && other.gameObject.tag=="Enemy")
+        {
+            var spawnedEffect = Instantiate(hammerMoveEffect, transform.position + Vector3.up * 2, Quaternion.identity);
+
+            spawnedEffect.gameObject.transform.parent = transform;
+            spawnedEffect.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        }
+        else if (other.gameObject.name == "Angry Punch(Clone)" && other.gameObject.tag != "Enemy" && gameObject.tag == "Enemy")
+        {
+            var spawnedEffect = Instantiate(hammerMoveEffect, transform.position + Vector3.up * 2, Quaternion.Euler(new Vector3(180, 0, 0)));
+
+            spawnedEffect.gameObject.transform.parent = transform;
+            spawnedEffect.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "Angry Punch(Clone)" && gameObject.tag == "Dwarf" && other.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
+        }
+        else if (other.gameObject.name == "Angry Punch(Clone)" && other.gameObject.tag != "Enemy" && gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
+        }
+
+    }
+
 
 
 
