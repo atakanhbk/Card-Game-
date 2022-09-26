@@ -20,9 +20,14 @@ public class AIController : MonoBehaviour
     public GameObject[] enemies;
 
     public static bool speedBoostActivate = false;
-  
+
+    public int levelDifficulty; //Level Difficulty eðer 1 ise = EASY  || Level Difficulty eðer 2 ise = MEDIUM || Level Difficulty eðer 3 ise = HARD
+
+
+
     private void Update()
     {
+        
         SpawnCharacterFunction();
 
         UseSkillFunction();
