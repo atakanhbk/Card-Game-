@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class FinishGame : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public bool isGameFinished = false;
+
+
     void Start()
     {
-        
+        isGameFinished = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+      
+
+        Destroy(GameObject.FindGameObjectWithTag("Human"));
+        Destroy(GameObject.FindGameObjectWithTag("Elf"));
+        Destroy(GameObject.FindGameObjectWithTag("Dwarf"));
+        Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+        Destroy(GameObject.FindGameObjectWithTag("Enemy"));
     }
 }
