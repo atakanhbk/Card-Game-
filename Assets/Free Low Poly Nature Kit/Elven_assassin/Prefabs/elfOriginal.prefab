@@ -1059,7 +1059,7 @@ GameObject:
   - component: {fileID: 453682}
   - component: {fileID: 9509000}
   m_Layer: 0
-  m_Name: elf_cartoon
+  m_Name: elfOriginal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
