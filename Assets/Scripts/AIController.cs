@@ -23,8 +23,29 @@ public class AIController : MonoBehaviour
 
     public int levelDifficulty; //Level Difficulty eðer 1 ise = EASY  || Level Difficulty eðer 2 ise = MEDIUM || Level Difficulty eðer 3 ise = HARD
 
+    int spawnCharacterCooldown = 5;
+    int skillCooldown = 5;
 
+    private void Start()
+    {
+        if (levelDifficulty == 1)
+        {
+            spawnCharacterCooldown = 10;
+            skillCooldown = 15;
+        }
 
+        else if (levelDifficulty == 2)
+        {
+            spawnCharacterCooldown = 7;
+            skillCooldown = 12;
+        }
+
+        else if (levelDifficulty == 3)
+        {
+            spawnCharacterCooldown = 5;
+            skillCooldown = 10;
+        }
+    }
     private void Update()
     {
         
@@ -37,7 +58,7 @@ public class AIController : MonoBehaviour
     {
         spawnChracterTimer += Time.deltaTime;
 
-        if (spawnChracterTimer >= 4.5f)
+        if (spawnChracterTimer >= spawnCharacterCooldown)
         {
             int randomDirection = Random.Range(0, 4);
             int randomCharacter = Random.Range(0, 3);
@@ -69,7 +90,7 @@ public class AIController : MonoBehaviour
        
             skillCooldownTimer += Time.deltaTime;
 
-            if (skillCooldownTimer >= 10)
+            if (skillCooldownTimer >= skillCooldown)
             {
             //int chooseRandomSkill = Random.Range(0,3);
             int chooseRandomSkill = 1;
