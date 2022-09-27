@@ -106,8 +106,19 @@ public class SkillController : MonoBehaviour
                 }
             }
         }
-     
 
+        if (cantUseSkill.activeSelf && isSkillEnabled)
+        {
+            skillEffectTimer += Time.deltaTime;
+
+            if (skillEffectTimer >= 3)
+            {
+                skillEffectTimer = 0;
+                isSkillEnabled = false;
+
+                spawnCharacterController.GetComponent<SpawnCharacterController>().fillAmountTimer = 0.001f;
+            }
+        }
 
     }
 }
