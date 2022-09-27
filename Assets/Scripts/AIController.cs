@@ -10,8 +10,8 @@ public class AIController : MonoBehaviour
 
     float skillCooldownTimer = 0;
     float skillActiaveTimer = 0;
-   
 
+    public List<GameObject> directionsWhichHasEnemy =  new List<GameObject>();
     public List<GameObject> directionList = new List<GameObject>();
     public List<GameObject> characterList = new List<GameObject>();
 
@@ -23,8 +23,8 @@ public class AIController : MonoBehaviour
 
     public int levelDifficulty; //Level Difficulty eðer 1 ise = EASY  || Level Difficulty eðer 2 ise = MEDIUM || Level Difficulty eðer 3 ise = HARD
 
-    int spawnCharacterCooldown = 20;
-    int skillCooldown = 20;
+    int spawnCharacterCooldown = 3;
+    int skillCooldown = 3;
 
     private void Start()
     {
@@ -48,13 +48,27 @@ public class AIController : MonoBehaviour
     }
     private void Update()
     {
-        
-        SpawnCharacterFunction();
+        if (levelDifficulty == 1)
+        {
+            RandomSpawnCharacterFunction();
+            RandomUseSkillFunction();
+        }
+        else if (levelDifficulty == 2)
+        {
+            SpawnCharacterSmartFunction();
+            RandomUseSkillFunction();
+        }
+        else if (levelDifficulty == 3)
+        {
+            SpawnCharacterSmartFunction();
+            UseSkillSmartFunction();
+        }
+       
 
-        UseSkillFunction();
+       
     }
 
-    void SpawnCharacterFunction()
+    void RandomSpawnCharacterFunction()
     {
         spawnChracterTimer += Time.deltaTime;
 
@@ -63,28 +77,20 @@ public class AIController : MonoBehaviour
             int randomDirection = Random.Range(0, 4);
             int randomCharacter = Random.Range(0, 3);
 
-            if (characterList[randomCharacter].gameObject.tag == "Human")
-            {
+       
                 var spawnedCharacter = Instantiate(characterList[randomCharacter], directionList[randomDirection].transform.position, Quaternion.Euler(0,0, 0));
 
                 spawnedCharacter.gameObject.name = "" + spawnedCharacter.gameObject.tag + "Deneme";
                 spawnedCharacter.gameObject.tag = "Enemy";
                 spawnChracterTimer = 0;
-            }
-            else
-            {
-                var spawnedCharacter = Instantiate(characterList[randomCharacter], directionList[randomDirection].transform.position, Quaternion.Euler(0, 0, 0));
-
-                spawnedCharacter.gameObject.name = "" + spawnedCharacter.gameObject.tag + "Deneme";
-                spawnedCharacter.gameObject.tag = "Enemy";
-                spawnChracterTimer = 0;
-            }
+          
+         
 
 
         }
     }
 
-    void UseSkillFunction()
+    void RandomUseSkillFunction()
     {
       
        
@@ -92,8 +98,8 @@ public class AIController : MonoBehaviour
 
             if (skillCooldownTimer >= skillCooldown)
             {
-            //int chooseRandomSkill = Random.Range(0,3);
-            int chooseRandomSkill = 1;
+            int chooseRandomSkill = Random.Range(0,3);
+           
 
                 if (chooseRandomSkill == 0)
                 {
@@ -123,5 +129,88 @@ public class AIController : MonoBehaviour
             }
       
       
+    }
+
+
+    void SpawnCharacterSmartFunction()
+    {
+        spawnChracterTimer += Time.deltaTime;
+
+        if (spawnChracterTimer >= spawnCharacterCooldown)
+        {
+            
+            int randomCharacter = Random.Range(0, 3);
+            int smartDirection = Random.Range(0, directionsWhichHasEnemy.Count);
+            directionsWhichHasEnemy.Clear();
+            for (int i = 0; i < directionList.Count; i++)
+            {
+               
+
+
+                if (directionList[i].GetComponent<DetectEnemyInLine>().numberOfEnemies > 0)
+                {
+                    directionsWhichHasEnemy.Add(directionList[i]);
+                    
+                }
+            }
+
+            if (directionsWhichHasEnemy.Count> 0)
+            {
+                var spawnedCharacter = Instantiate(characterList[randomCharacter], directionsWhichHasEnemy[smartDirection].transform.position, Quaternion.Euler(0, 0, 0));
+                spawnedCharacter.gameObject.name = "" + spawnedCharacter.gameObject.tag + "Deneme";
+                spawnedCharacter.gameObject.tag = "Enemy";
+                spawnChracterTimer = 0;
+            }
+            else
+            {
+                int randomDirection = Random.Range(0, 4);
+                var spawnedCharacter = Instantiate(characterList[randomCharacter], directionList[randomDirection].transform.position, Quaternion.Euler(0, 0, 0));
+                spawnedCharacter.gameObject.name = "" + spawnedCharacter.gameObject.tag + "Deneme";
+                spawnedCharacter.gameObject.tag = "Enemy";
+                spawnChracterTimer = 0;
+            }
+           
+
+          
+
+        }
+    }
+
+    void UseSkillSmartFunction()
+    {
+        skillCooldownTimer += Time.deltaTime;
+
+        if (skillCooldownTimer >= skillCooldown)
+        {
+            int chooseRandomSkill = Random.Range(0,3);
+           
+
+            if (chooseRandomSkill == 0)
+            {
+                speedBoostActivate = true;
+                skillCooldownTimer = 0;
+            }
+
+            else if (chooseRandomSkill == 1)
+            {
+                int randomDirection = Random.Range(0, directionsWhichHasEnemy.Count);
+                var spawnedSkill = Instantiate(AngryFist, directionsWhichHasEnemy[randomDirection].transform.position, Quaternion.Euler(0, -90, 0));
+                spawnedSkill.gameObject.tag = "Enemy";
+                skillCooldownTimer = 0;
+            }
+
+        }
+
+        if (speedBoostActivate)
+        {
+            skillActiaveTimer += Time.deltaTime;
+
+            if (skillActiaveTimer >= 3)
+            {
+                skillActiaveTimer = 0;
+                speedBoostActivate = false;
+            }
+        }
+
     }
 }
