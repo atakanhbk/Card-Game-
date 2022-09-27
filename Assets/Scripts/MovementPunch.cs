@@ -11,10 +11,10 @@ public class MovementPunch : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
      
-            transform.Translate(0.3f, 0, 0);
+            transform.Translate(0.7f, 0, 0);
         transform.Rotate(new Vector3(2, 0, 0));
     
     }

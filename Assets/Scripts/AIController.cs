@@ -23,8 +23,8 @@ public class AIController : MonoBehaviour
 
     public int levelDifficulty; //Level Difficulty eðer 1 ise = EASY  || Level Difficulty eðer 2 ise = MEDIUM || Level Difficulty eðer 3 ise = HARD
 
-    int spawnCharacterCooldown = 5;
-    int skillCooldown = 5;
+    int spawnCharacterCooldown = 20;
+    int skillCooldown = 20;
 
     private void Start()
     {

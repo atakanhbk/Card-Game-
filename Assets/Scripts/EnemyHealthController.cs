@@ -7,6 +7,8 @@ public class EnemyHealthController : MonoBehaviour
 {
     public int enemyHealth = 100;
     Text enemyHealthText;
+
+    public GameObject winScreen;
     void Start()
     {
         enemyHealthText = gameObject.GetComponent<Text>();   
@@ -16,5 +18,11 @@ public class EnemyHealthController : MonoBehaviour
     void Update()
     {
         enemyHealthText.text = "" + enemyHealth;
+
+        if (enemyHealth<= 0)
+        {
+            winScreen.SetActive(true);
+            winScreen.transform.parent.gameObject.SetActive(true);
+        }
     }
 }

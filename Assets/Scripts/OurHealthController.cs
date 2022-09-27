@@ -7,6 +7,8 @@ public class OurHealthController : MonoBehaviour
 {
     public int ourHealth = 100;
     Text ourHealthText;
+
+    public GameObject loseScreen;
     void Start()
     {
         ourHealthText = gameObject.GetComponent<Text>();
@@ -16,6 +18,12 @@ public class OurHealthController : MonoBehaviour
     void Update()
     {
         ourHealthText.text = "" + ourHealth;
+
+        if (ourHealth<=0)
+        {
+            loseScreen.gameObject.SetActive(true);
+            loseScreen.transform.parent.gameObject.SetActive(true);
+        }
     }
 }
 
