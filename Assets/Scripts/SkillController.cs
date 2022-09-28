@@ -102,7 +102,7 @@ public class SkillController : MonoBehaviour
                     skillEffectTimer = 0;
                     isSkillEnabled = false;
 
-                    spawnCharacterController.GetComponent<SpawnCharacterController>().fillAmountTimer = 0.001f;
+                    spawnCharacterController.GetComponent<SpawnCharacterController>().fillAmountTimer = 0.003f;
                 }
             }
         }
@@ -116,9 +116,29 @@ public class SkillController : MonoBehaviour
                 skillEffectTimer = 0;
                 isSkillEnabled = false;
 
-                spawnCharacterController.GetComponent<SpawnCharacterController>().fillAmountTimer = 0.001f;
+                spawnCharacterController.GetComponent<SpawnCharacterController>().fillAmountTimer = 0.003f;
             }
         }
+
+        if (Money.GetComponent<MoneyText>().moneyAmount < 500 && gameObject.name == "Skill Icon 1")
+        {
+            cantUseSkill.SetActive(true);
+            skillCooldown.GetComponent<Image>().fillAmount = 0;
+        }
+
+        if (Money.GetComponent<MoneyText>().moneyAmount < 500 && gameObject.name == "Skill Icon 2")
+        {
+            cantUseSkill.SetActive(true);
+            skillCooldown.GetComponent<Image>().fillAmount = 0;
+
+        }
+
+        if (Money.GetComponent<MoneyText>().moneyAmount < 1500 && gameObject.name == "Skill Icon 3")
+        {
+            cantUseSkill.SetActive(true);
+            skillCooldown.GetComponent<Image>().fillAmount = 0;
+        }
+       
 
     }
 }

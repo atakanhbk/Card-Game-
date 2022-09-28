@@ -22,6 +22,9 @@ public class SpawnCharacterController : MonoBehaviour
     public GameObject elfCardCooldown;
     public GameObject dwarfCardCooldown;
 
+    public GameObject humanCard;
+  
+
     public float fillAmountTimer = 0.001f;
 
     public ParticleSystem spawnEffect;
@@ -38,7 +41,7 @@ public class SpawnCharacterController : MonoBehaviour
         if (spawnedCharacter)
         {
             timerForSpawnNewCharacter += Time.deltaTime;
-            choosenCard.GetComponent<ChoosenCard>().choosenCard.transform.localPosition = new Vector3(choosenCard.GetComponent<ChoosenCard>().choosenCard.transform.localPosition.x, 0, choosenCard.GetComponent<ChoosenCard>().choosenCard.transform.localPosition.z);
+            choosenCard.GetComponent<ChoosenCard>().choosenCard.transform.localPosition = new Vector3(choosenCard.GetComponent<ChoosenCard>().choosenCard.transform.localPosition.x, humanCard.GetComponent<PointerEnterCard>().startPosition.y, choosenCard.GetComponent<ChoosenCard>().choosenCard.transform.localPosition.z);
             directionArrows.SetActive(false);
 
           
