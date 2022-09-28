@@ -21,6 +21,8 @@ public class SkillController : MonoBehaviour
     public GameObject spawnCharacterController;
     public GameObject cantUseSkill;
 
+    bool pressSkill = false;
+
     void Start()
     {
     }
@@ -39,26 +41,29 @@ public class SkillController : MonoBehaviour
         else
         {
             cantUseSkill.SetActive(false);
-            if (Input.GetKeyDown(KeyCode.Alpha1) && canSkillUse && gameObject.name == "Skill Icon 1")
+            if (pressSkill && canSkillUse && gameObject.name == "Skill Icon 1")
             {
 
                 Money.GetComponent<MoneyText>().moneyAmount -= 500;
                 Money.GetComponent<MoneyText>().goldOrb.GetComponent<Image>().fillAmount -= 0.16f;
                 skillCooldown.SetActive(true);
                 canSkillUse = false;
+                pressSkill = false;
                 isSkillEnabled = true;
                 skillCooldown.GetComponent<Image>().fillAmount = 1;
             }
 
-            else if (Input.GetKeyDown(KeyCode.Alpha2) && canSkillUse && gameObject.name == "Skill Icon 2")
+            else if (pressSkill && canSkillUse && gameObject.name == "Skill Icon 2")
             {
                 directionArrowsForSkill.SetActive(true);
                 directionArrows.SetActive(false);
+                
 
             }
 
             if (skill2Used)
             {
+                pressSkill = false;
                 Money.GetComponent<MoneyText>().moneyAmount -= 500;
                 Money.GetComponent<MoneyText>().goldOrb.GetComponent<Image>().fillAmount -= 0.16f;
                 skillCooldown.SetActive(true);
@@ -69,13 +74,14 @@ public class SkillController : MonoBehaviour
                 skill2Used = false;
             }
 
-            else if (Input.GetKeyDown(KeyCode.Alpha3) && canSkillUse && gameObject.name == "Skill Icon 3")
+            else if (pressSkill && canSkillUse && gameObject.name == "Skill Icon 3")
             {
                 Money.GetComponent<MoneyText>().moneyAmount -= 1500;
                 Money.GetComponent<MoneyText>().goldOrb.GetComponent<Image>().fillAmount -= 0.5f;
                 spawnCharacterController.GetComponent<SpawnCharacterController>().fillAmountTimer = 0.01f;
                 skillCooldown.SetActive(true);
                 canSkillUse = false;
+                pressSkill = false;
                 isSkillEnabled = true;
                 skillCooldown.GetComponent<Image>().fillAmount = 1;
             }
@@ -90,6 +96,7 @@ public class SkillController : MonoBehaviour
                 if (skillCooldown.GetComponent<Image>().fillAmount <= 0)
                 {
                     canSkillUse = true;
+                    pressSkill = true;
                 }
             }
 
@@ -123,12 +130,14 @@ public class SkillController : MonoBehaviour
         if (Money.GetComponent<MoneyText>().moneyAmount < 500 && gameObject.name == "Skill Icon 1")
         {
             cantUseSkill.SetActive(true);
+            pressSkill = false;
             skillCooldown.GetComponent<Image>().fillAmount = 0;
         }
 
         if (Money.GetComponent<MoneyText>().moneyAmount < 500 && gameObject.name == "Skill Icon 2")
         {
             cantUseSkill.SetActive(true);
+            pressSkill = false;
             skillCooldown.GetComponent<Image>().fillAmount = 0;
 
         }
@@ -136,9 +145,15 @@ public class SkillController : MonoBehaviour
         if (Money.GetComponent<MoneyText>().moneyAmount < 1500 && gameObject.name == "Skill Icon 3")
         {
             cantUseSkill.SetActive(true);
+            pressSkill = false;
             skillCooldown.GetComponent<Image>().fillAmount = 0;
         }
        
 
+    }
+
+    public void PressSkill()
+    {
+        pressSkill = true;
     }
 }

@@ -27,17 +27,17 @@ public class MainMenu : MonoBehaviour
 
     public void EasyLevel()
     {
-        AIController.GetComponent<AIController>().levelDifficulty = 1;
+        PlayerPrefs.SetInt("level", 1);
     }
 
     public void MediumLevel()
     {
-        AIController.GetComponent<AIController>().levelDifficulty = 2;
+        PlayerPrefs.SetInt("level", 2);
     }
 
     public void HardLevel()
     {
-        AIController.GetComponent<AIController>().levelDifficulty = 3;
+        PlayerPrefs.SetInt("level",3);
     }
 
     public void QuitGame()

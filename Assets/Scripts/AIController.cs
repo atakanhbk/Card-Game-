@@ -28,6 +28,7 @@ public class AIController : MonoBehaviour
 
     private void Start()
     {
+        levelDifficulty = PlayerPrefs.GetInt("level");
         if (levelDifficulty == 1)
         {
             spawnCharacterCooldown = 15;
