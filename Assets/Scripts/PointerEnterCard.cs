@@ -5,7 +5,7 @@ using UnityEngine;
 public class PointerEnterCard : MonoBehaviour
 {
 
-    bool isChosen = false;
+    public bool isChosen = false;
 
     public GameObject directionsArrows;
     public GameObject directionsArrowsForSkill;
@@ -24,9 +24,9 @@ public class PointerEnterCard : MonoBehaviour
         if (skill2.GetComponent<SkillController>().pressSkill && isChosen)
         {
  
-                transform.localPosition = new Vector3(transform.localPosition.x, startPosition.y, transform.localPosition.z);
+            transform.localPosition = new Vector3(transform.localPosition.x, startPosition.y, transform.localPosition.z);
 
-       
+            
             isChosen = false;
         }
      
