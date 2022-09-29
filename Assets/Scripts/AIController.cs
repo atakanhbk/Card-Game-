@@ -26,6 +26,9 @@ public class AIController : MonoBehaviour
     int spawnCharacterCooldown;
     int skillCooldown;
 
+    int fullDirectionNumber = 0;
+
+
     private void Start()
     {
         if (PlayerPrefs.GetInt("level") == 0)
@@ -60,12 +63,12 @@ public class AIController : MonoBehaviour
         if (levelDifficulty == 1)
         {
             RandomSpawnCharacterFunction();
-            RandomUseSkillFunction();
+            UseSkillSmartFunction();
         }
         else if (levelDifficulty == 2)
         {
             SpawnCharacterSmartFunction();
-            RandomUseSkillFunction();
+            UseSkillSmartFunction();
         }
         else if (levelDifficulty == 3)
         {
@@ -98,7 +101,7 @@ public class AIController : MonoBehaviour
 
         }
     }
-
+    /*
     void RandomUseSkillFunction()
     {
       
@@ -139,7 +142,7 @@ public class AIController : MonoBehaviour
       
       
     }
-
+    */
 
     void SpawnCharacterSmartFunction()
     {
@@ -154,14 +157,24 @@ public class AIController : MonoBehaviour
             for (int i = 0; i < directionList.Count; i++)
             {
                
-
+                
 
                 if (directionList[i].GetComponent<DetectEnemyInLine>().numberOfEnemies > 0)
                 {
                     directionsWhichHasEnemy.Add(directionList[i]);
-                    
+                    fullDirectionNumber++;
                 }
+            
+
+                
             }
+
+            if (fullDirectionNumber == 0)
+            {
+                Debug.Log("NONE");
+                directionsWhichHasEnemy.Clear();
+            }
+         
 
             if (directionsWhichHasEnemy.Count> 0)
             {
@@ -178,9 +191,10 @@ public class AIController : MonoBehaviour
                 spawnedCharacter.gameObject.tag = "Enemy";
                 spawnChracterTimer = 0;
             }
-           
 
-          
+
+         
+            fullDirectionNumber = 0;
 
         }
     }
@@ -200,11 +214,16 @@ public class AIController : MonoBehaviour
                 skillCooldownTimer = 0;
             }
 
-            else if (chooseRandomSkill == 1)
+            else if (chooseRandomSkill == 1 && directionsWhichHasEnemy.Count > 0)
             {
                 int randomDirection = Random.Range(0, directionsWhichHasEnemy.Count);
                 var spawnedSkill = Instantiate(AngryFist, directionsWhichHasEnemy[randomDirection].transform.position, Quaternion.Euler(0, -90, 0));
                 spawnedSkill.gameObject.tag = "Enemy";
+                skillCooldownTimer = 0;
+            }
+
+            else if (chooseRandomSkill == 1 && directionsWhichHasEnemy.Count == 0)
+            {
                 skillCooldownTimer = 0;
             }
 
