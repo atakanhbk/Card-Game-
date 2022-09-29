@@ -10,15 +10,26 @@ public class PointerEnterCard : MonoBehaviour
     public GameObject directionsArrows;
     public GameObject directionsArrowsForSkill;
 
+   public GameObject skill2;
+
     public Vector3 startPosition;
     private void Start()
     {
         startPosition = transform.localPosition;
+
     }
 
     private void Update()
     {
+        if (skill2.GetComponent<SkillController>().pressSkill && isChosen)
+        {
+ 
+                transform.localPosition = new Vector3(transform.localPosition.x, startPosition.y, transform.localPosition.z);
+
        
+            isChosen = false;
+        }
+     
     }
     public void Pressed()
     {
@@ -35,7 +46,7 @@ public class PointerEnterCard : MonoBehaviour
             }
           
             isChosen = true;
-
+            skill2.GetComponent<SkillController>().pressSkill = false;
             transform.parent.GetComponent<ChoosenCard>().choosenCard = gameObject;
             directionsArrows.SetActive(true);
             directionsArrowsForSkill.SetActive(false);
@@ -45,13 +56,14 @@ public class PointerEnterCard : MonoBehaviour
         }
 
 
-        else if (isChosen)
+        else if (isChosen )
         {
-          
+           
             isChosen = false;
+
             directionsArrows.SetActive(false);
-         
             transform.localPosition = new Vector3(transform.localPosition.x, startPosition.y, transform.localPosition.z);
+
         }
 
 

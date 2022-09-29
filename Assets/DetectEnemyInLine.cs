@@ -6,10 +6,7 @@ public class DetectEnemyInLine : MonoBehaviour
 {
     public int numberOfEnemies = 0;
 
-    private void Update()
-    {
-        Debug.Log("" + gameObject.name + " Enemy Number is = " + numberOfEnemies);
-    }
+  
 
     private void OnTriggerEnter(Collider other)
     {

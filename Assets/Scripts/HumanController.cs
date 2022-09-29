@@ -14,6 +14,7 @@ public class HumanController : MonoBehaviour
     public GameObject enemyHealth;
     public GameObject ourHealth;
     public GameObject speedBoost;
+
     
 
     [SerializeField] float damagePerSecond;

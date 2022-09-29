@@ -21,7 +21,8 @@ public class SkillController : MonoBehaviour
     public GameObject spawnCharacterController;
     public GameObject cantUseSkill;
 
-    bool pressSkill = false;
+    public bool pressSkill = false;
+
 
     void Start()
     {
@@ -57,6 +58,8 @@ public class SkillController : MonoBehaviour
             {
                 directionArrowsForSkill.SetActive(true);
                 directionArrows.SetActive(false);
+
+             
                 
 
             }
@@ -155,5 +158,9 @@ public class SkillController : MonoBehaviour
     public void PressSkill()
     {
         pressSkill = true;
+
+     
+
+       
     }
 }

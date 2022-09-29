@@ -1927,6 +1927,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   punch: {fileID: 3563275943138320266, guid: a5455f7d93da6ad4a987424e42c80120, type: 3}
   skill2: {fileID: 1900402385}
+  humanCard: {fileID: 1605565757}
+  elfCard: {fileID: 158834706}
+  dwarfCard: {fileID: 155010183}
 --- !u!114 &101384447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2752,6 +2755,16 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4243391650634184, guid: ec5b3ecd9efe69147a7904cd08f43b2f, type: 3}
   m_PrefabInstance: {fileID: 148381244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &155010183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3065307172051838420, guid: d6e47a1f5a67c8c4eb9cd2c71ad77b74, type: 3}
+  m_PrefabInstance: {fileID: 8911865247610829386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &158834706 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3544466841352125112, guid: d6e47a1f5a67c8c4eb9cd2c71ad77b74, type: 3}
+  m_PrefabInstance: {fileID: 8911865247610829386}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &163355431
 PrefabInstance:
@@ -21704,6 +21717,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   punch: {fileID: 3563275943138320266, guid: a5455f7d93da6ad4a987424e42c80120, type: 3}
   skill2: {fileID: 1900402385}
+  humanCard: {fileID: 1605565757}
+  elfCard: {fileID: 158834706}
+  dwarfCard: {fileID: 155010183}
 --- !u!114 &1366826011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26011,6 +26027,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   punch: {fileID: 3563275943138320266, guid: a5455f7d93da6ad4a987424e42c80120, type: 3}
   skill2: {fileID: 1900402385}
+  humanCard: {fileID: 1605565757}
+  elfCard: {fileID: 158834706}
+  dwarfCard: {fileID: 155010183}
 --- !u!114 &1645946839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32061,6 +32080,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   punch: {fileID: 3563275943138320266, guid: a5455f7d93da6ad4a987424e42c80120, type: 3}
   skill2: {fileID: 1900402385}
+  humanCard: {fileID: 1605565757}
+  elfCard: {fileID: 158834706}
+  dwarfCard: {fileID: 155010183}
 --- !u!114 &1928386593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37153,6 +37175,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7703891535622058009, guid: 68513c68511902646adb36329f2c4d8e, type: 3}
+      propertyPath: humanCard
+      value: 
+      objectReference: {fileID: 1605565757}
+    - target: {fileID: 7703891535622058009, guid: 68513c68511902646adb36329f2c4d8e, type: 3}
       propertyPath: directionArrows
       value: 
       objectReference: {fileID: 2117571875}
@@ -37357,6 +37383,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3065307172051838441, guid: d6e47a1f5a67c8c4eb9cd2c71ad77b74, type: 3}
+      propertyPath: skill2
+      value: 
+      objectReference: {fileID: 1900402385}
+    - target: {fileID: 3065307172051838441, guid: d6e47a1f5a67c8c4eb9cd2c71ad77b74, type: 3}
       propertyPath: directionsArrows
       value: 
       objectReference: {fileID: 2117571875}
@@ -37377,6 +37407,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3544466841352125127, guid: d6e47a1f5a67c8c4eb9cd2c71ad77b74, type: 3}
+      propertyPath: skill2
+      value: 
+      objectReference: {fileID: 1900402385}
+    - target: {fileID: 3544466841352125127, guid: d6e47a1f5a67c8c4eb9cd2c71ad77b74, type: 3}
       propertyPath: directionsArrows
       value: 
       objectReference: {fileID: 2117571875}
@@ -37384,6 +37418,10 @@ PrefabInstance:
       propertyPath: directionsArrowsForSkill
       value: 
       objectReference: {fileID: 991053879}
+    - target: {fileID: 5864967608905526521, guid: d6e47a1f5a67c8c4eb9cd2c71ad77b74, type: 3}
+      propertyPath: skill2
+      value: 
+      objectReference: {fileID: 1900402385}
     - target: {fileID: 5864967608905526521, guid: d6e47a1f5a67c8c4eb9cd2c71ad77b74, type: 3}
       propertyPath: directionsArrows
       value: 
@@ -37394,7 +37432,7 @@ PrefabInstance:
       objectReference: {fileID: 991053879}
     - target: {fileID: 5864967608905526525, guid: d6e47a1f5a67c8c4eb9cd2c71ad77b74, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4.9000244
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5864967608905526525, guid: d6e47a1f5a67c8c4eb9cd2c71ad77b74, type: 3}
       propertyPath: m_AnchoredPosition.y

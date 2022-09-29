@@ -23,8 +23,8 @@ public class AIController : MonoBehaviour
 
     public int levelDifficulty; //Level Difficulty eðer 1 ise = EASY  || Level Difficulty eðer 2 ise = MEDIUM || Level Difficulty eðer 3 ise = HARD
 
-    int spawnCharacterCooldown = 10;
-    int skillCooldown = 10;
+    int spawnCharacterCooldown = 15;
+    int skillCooldown = 20;
 
     private void Start()
     {
@@ -37,14 +37,14 @@ public class AIController : MonoBehaviour
 
         else if (levelDifficulty == 2)
         {
-            spawnCharacterCooldown = 10;
-            skillCooldown = 15;
+            spawnCharacterCooldown = 13;
+            skillCooldown = 17;
         }
 
         else if (levelDifficulty == 3)
         {
-            spawnCharacterCooldown = 5;
-            skillCooldown = 7;
+            spawnCharacterCooldown = 10;
+            skillCooldown = 14;
         }
     }
     private void Update()
