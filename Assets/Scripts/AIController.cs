@@ -23,12 +23,20 @@ public class AIController : MonoBehaviour
 
     public int levelDifficulty; //Level Difficulty eðer 1 ise = EASY  || Level Difficulty eðer 2 ise = MEDIUM || Level Difficulty eðer 3 ise = HARD
 
-    int spawnCharacterCooldown = 15;
-    int skillCooldown = 20;
+    int spawnCharacterCooldown;
+    int skillCooldown;
 
     private void Start()
     {
-        levelDifficulty = PlayerPrefs.GetInt("level");
+        if (PlayerPrefs.GetInt("level") == 0)
+        {
+            PlayerPrefs.SetInt("level", 1);
+        }
+      
+       
+            levelDifficulty = PlayerPrefs.GetInt("level");
+       
+       
         if (levelDifficulty == 1)
         {
             spawnCharacterCooldown = 15;
