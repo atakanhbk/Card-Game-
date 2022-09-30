@@ -8462,8 +8462,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 222.00623, y: 20, z: 43.40401}
-  m_Center: {x: -101.00462, y: 0, z: 0.00000002270496}
+  m_Size: {x: 212.92746, y: 20, z: 43.40401}
+  m_Center: {x: -96.46546, y: 0, z: 0.000000005210044}
 --- !u!1001 &400471080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8990,7 +8990,7 @@ MonoBehaviour:
   elfCardCooldown: {fileID: 345695250}
   dwarfCardCooldown: {fileID: 1043382687}
   humanCard: {fileID: 1941579110}
-  fillAmountTimer: 0.003
+  fillAmountTimer: 0.005
   spawnEffect: {fileID: 3742092236187140960, guid: 163b009a337323543bc0ac1f03169062, type: 3}
 --- !u!4 &438457033
 Transform:
@@ -21457,8 +21457,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 222.15051, y: 20, z: 32.283688}
-  m_Center: {x: -101.076904, y: 0, z: 5.560181}
+  m_Size: {x: 210.02734, y: 20, z: 32.283688}
+  m_Center: {x: -95.01569, y: 0, z: 5.5602007}
 --- !u!114 &1078897828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32375,8 +32375,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 222.55896, y: 20, z: 43.40401}
-  m_Center: {x: -101.28102, y: 0, z: -7.811476e-10}
+  m_Size: {x: 212.77174, y: 20, z: 43.40401}
+  m_Center: {x: -96.38775, y: 0, z: 2.6209523e-10}
 --- !u!114 &1559741792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36340,8 +36340,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 225.38165, y: 20, z: 43.40401}
-  m_Center: {x: -102.692665, y: 0, z: -0.000000006455908}
+  m_Size: {x: 211.5728, y: 20, z: 43.40401}
+  m_Center: {x: -95.78855, y: 0, z: -0.00000000399708}
 --- !u!1 &1747603036
 GameObject:
   m_ObjectHideFlags: 0

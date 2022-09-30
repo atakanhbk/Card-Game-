@@ -42,20 +42,20 @@ public class AIController : MonoBehaviour
        
         if (levelDifficulty == 1)
         {
-            spawnCharacterCooldown = 15;
-            skillCooldown = 20;
+            spawnCharacterCooldown = 10;
+            skillCooldown = 14;
         }
 
         else if (levelDifficulty == 2)
         {
-            spawnCharacterCooldown = 13;
-            skillCooldown = 17;
+            spawnCharacterCooldown = 7;
+            skillCooldown = 10;
         }
 
         else if (levelDifficulty == 3)
         {
-            spawnCharacterCooldown = 10;
-            skillCooldown = 14;
+            spawnCharacterCooldown = 5;
+            skillCooldown = 10;
         }
     }
     private void Update()
